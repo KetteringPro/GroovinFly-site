@@ -1,1 +1,0 @@
-export default function Community(){return(<div className="max-w-4xl mx-auto p-6"><h1 className="text-3xl font-extrabold">Style Lounge & Community</h1><p className="mt-3 text-white/80">Private FB groups per trip, outfit inspo, vendor spotlights.</p></div>);}
