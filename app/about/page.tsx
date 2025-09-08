@@ -1,0 +1,1 @@
+export default function About(){return(<div className="max-w-4xl mx-auto p-6"><h1 className="text-4xl font-extrabold">About GroovinFly</h1><p className="mt-4 text-lg text-white/80">High‑energy, small‑group travel for fearless women.</p></div>);}
