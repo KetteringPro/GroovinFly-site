@@ -1,1 +1,7 @@
-@tailwind base; @tailwind components; @tailwind utilities; body{font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* any site-wide styles */
+html, body { height: 100%; }
