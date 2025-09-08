@@ -1,24 +1,61 @@
-"use client"; import { useState } from "react"; import Link from "next/link";
-export default function Home(){ const [email,setEmail]=useState(""); const [sending,setSending]=useState(false);
-async function submit(e:React.FormEvent){ e.preventDefault(); setSending(true);
- await fetch("/api/lead",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,source:"homepage"})});
- setSending(false); setEmail(""); alert("Thanks! We'll be in touch.");}
-return (<main className="max-w-6xl mx-auto p-6">
-  <header className="text-center py-16">
-    <p className="uppercase tracking-[0.3em] text-fuchsia-300/80 text-sm">GroovinFly • 2026 Trips</p>
-    <h1 className="mt-3 text-4xl md:text-6xl font-extrabold leading-tight">Age gracefully. Party like the rockstar you are.</h1>
-    <p className="mt-4 text-lg md:text-xl text-white/80">High‑energy, small‑group travel for fearless women (40+).</p>
-    <div className="mt-8 flex gap-3 justify-center">
-      <Link href="/trips" className="px-6 py-3 rounded-2xl bg-fuchsia-500 font-bold">See 2026 Trips</Link>
-      <a href="#join" className="px-6 py-3 rounded-2xl border border-white/20">Join Interest List</a>
-    </div>
-  </header>
-  <section id="join" className="max-w-xl mx-auto text-center">
-    <form onSubmit={submit} className="mt-6 grid grid-cols-[1fr_auto] gap-3">
-      <input value={email} onChange={e=>setEmail(e.target.value)} required type="email" placeholder="you@email.com"
-        className="px-4 py-3 rounded-xl bg-white/10 border border-white/20" />
-      <button disabled={sending} className="px-6 py-3 rounded-xl bg-fuchsia-500 font-bold">{sending?"Saving…":"Get Updates"}</button>
-    </form>
-    <p className="mt-3 text-xs text-white/60">Replace with your Mailchimp/ConvertKit embed.</p>
-  </section>
-</main>); }
+export const metadata = {
+  title: "GroovinFly — Age gracefully. Party joyfully.",
+  description: "High-energy small-group trips for fearless women.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" }
+    ],
+    apple: [{ url: "/icon-192.png" }]
+  }
+};
+
+export default function Home() {
+  return (
+    <main className="relative min-h-[80vh] overflow-hidden bg-[#160e1d]">
+      <div
+        className="
+          pointer-events-none absolute inset-0
+          opacity-20
+          [background-image:url('/logo-bg.png')]
+          bg-no-repeat bg-center
+          bg-contain
+          mix-blend-screen
+          blur-[0.5px]
+        "
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(255,255,255,0.12),transparent_45%),radial-gradient(circle_at_80%_80%,rgba(236,72,153,0.18),transparent_35%)]"
+        aria-hidden
+      />
+
+      <section className="relative z-10 max-w-5xl mx-auto px-6 py-24 text-center">
+        <h1 className="text-5xl md:text-6xl font-black tracking-tight">
+          Groovin<span className="text-fuchsia-400">Fly</span>
+        </h1>
+        <p className="mt-4 text-lg text-white/75">
+          Age gracefully. Party joyfully. Curated, high-energy trips for fearless women.
+        </p>
+
+        <div className="mt-8">
+          <a
+            href="/reserve"
+            className="
+              inline-block px-8 py-3 rounded-xl font-bold
+              bg-fuchsia-500
+              shadow-[0_0_0_0_rgba(217,70,239,0.0)]
+              transition-all duration-300
+              hover:shadow-[0_0_28px_8px_rgba(217,70,239,0.55)]
+              hover:scale-[1.03]
+              focus:outline-none focus:ring-2 focus:ring-fuchsia-300/70
+            "
+          >
+            Count me in!
+          </a>
+        </div>
+      </section>
+    </main>
+  );
+}
