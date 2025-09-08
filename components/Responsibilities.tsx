@@ -1,6 +1,8 @@
-export default function Responsibilities() {
+type Props = { className?: string };
+
+export default function Responsibilities({ className = "" }: Props) {
   return (
-    <div className="mt-8">
+    <div className={`mt-8 ${className}`}>
       <h3 className="text-xl font-bold">Groover Guidelines</h3>
       <ul className="mt-3 space-y-2">
         <li>✈️ Get yourself to the destination unless flights/transfers are included.</li>
