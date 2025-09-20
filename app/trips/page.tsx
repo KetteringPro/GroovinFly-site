@@ -1,12 +1,88 @@
-import Link from "next/link"; import { trips } from "@/lib/trips";
-export default function Trips(){ return (<div className="max-w-6xl mx-auto p-6">
-  <h1 className="text-3xl font-extrabold">2026 Trips</h1>
-  <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    {trips.map(t=>(<Link key={t.slug} href={`/trips/${t.slug}`} className="p-5 rounded-2xl bg-white/10 border border-white/10 hover:bg-white/15">
-      <div className="text-sm uppercase tracking-wide text-white/70">{t.dates}</div>
-      <h3 className="text-xl font-bold mt-1">{t.title}</h3>
-      <p className="text-white/80 mt-2">{t.blurb}</p>
-      <div className="mt-3 flex gap-2 text-xs flex-wrap">{t.tags.map(tag=>(<span key={tag} className="px-3 py-1 rounded-full bg-white/10">{tag}</span>))}</div>
-    </Link>))}
-  </div>
-</div>); }
+import Image from "next/image";
+import Link from "next/link";
+
+// Data for the trips cards
+ type Trip = {
+  href: string; // full path like /trips/2025/salem
+  title: string;
+  dates: string;
+  blurb: string;
+  image: { src: string; alt: string };
+};
+
+const trips: Trip[] = [
+  {
+    href: "/trips/salem-2025",
+    title: "🎃 Salem: Mystery, Magic & Mayhem",
+    dates: "Oct 17–20, 2025",
+    blurb: "Spooky-chic Halloween weekend with dinner, tours & witchy vibes.",
+    image: { src: "/images/salem/cover.jpg", alt: "Salem streets at Halloween" },
+  },
+  {
+    href: "/trips/portland-hampton-2025",
+    title: "🎉 Portland → Hampton: Last Hurrah",
+    dates: "Weekend getaway",
+    blurb: "Magic Mike Live, Old Port afterparty, Hampton boardwalk, Sun brunch.",
+    image: { src: "/images/portland-hampton/cover.jpg", alt: "Hampton boardwalk at sunset" },
+  },
+  {
+    href: "/trips/nyc-2025",
+    title: "🎄 NYC Holiday Trip: Holidays in the City",
+    dates: "Holiday season",
+    blurb: "Times Square stay, welcome dinner, Rockefeller Tree, Rockettes (premium).",
+    image: { src: "/images/nyc/cover.jpg", alt: "NYC holiday lights" },
+  },
+];
+
+export default function TripsListPage() {
+  return (
+    <main className="max-w-5xl mx-auto px-5 py-8">
+      {/* HERO / BANNER */}
+      <section className="relative overflow-hidden rounded-2xl border border-white/10 mb-8">
+        <div className="relative h-[220px] sm:h-[260px] md:h-[320px] lg:h-[380px]">
+          <Image
+            src="/images/banners/trips-2025.jpg"
+            alt="2025 Trips Banner"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center opacity-90"
+          />
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold text-purple-100">2025 Trips</h1>
+              <p className="mt-2 text-white/80">Pick your vibe and book your spot.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trips grid */}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {trips.map((t) => (
+          <article
+            key={t.href}
+            className="rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 border border-white/10 transition"
+          >
+            <div className="relative w-full h-48">
+              <Image src={t.image.src} alt={t.image.alt} fill className="object-cover" priority />
+            </div>
+            <div className="p-5 flex-1 flex flex-col">
+              <h2 className="text-lg font-semibold text-purple-200">{t.title}</h2>
+              <div className="text-sm text-white/70">{t.dates}</div>
+              <p className="text-white/90 mt-2 flex-1">{t.blurb}</p>
+              <div className="mt-4">
+                <Link
+                  href={t.href}
+                  className="inline-block bg-purple-700 hover:bg-purple-800 text-white font-semibold px-4 py-2 rounded-lg"
+                >
+                  View Details & Book
+                </Link>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </main>
+  );
+}

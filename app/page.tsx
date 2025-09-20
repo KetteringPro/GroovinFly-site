@@ -1,59 +1,92 @@
-export const metadata = {
-  title: "GroovinFly — Age gracefully. Party joyfully.",
-  description: "High-energy small-group trips for fearless women.",
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
-      { url: "/icon-512.png", type: "image/png", sizes: "512x512" }
-    ],
-    apple: [{ url: "/icon-192.png" }]
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+
+export default function HomePage() {
+  const [email, setEmail] = useState("");
+  const [sending, setSending] = useState(false);
+
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    try {
+      setSending(true);
+      await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+    } finally {
+      setSending(false);
+      setEmail("");
+    }
   }
-};
 
-export default function Home() {
   return (
-    <main className="relative min-h-[80vh] overflow-hidden bg-[#160e1d]">
-      <div
-        className="
-          pointer-events-none absolute inset-0
-          opacity-20
-          [background-image:url('/logo-bg.png')]
-          bg-no-repeat bg-center
-          bg-contain
-          mix-blend-screen
-          blur-[0.5px]
-        "
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(255,255,255,0.12),transparent_45%),radial-gradient(circle_at_80%_80%,rgba(236,72,153,0.18),transparent_35%)]"
-        aria-hidden
-      />
-
-      <section className="relative z-10 max-w-5xl mx-auto px-6 py-24 text-center">
-        <h1 className="text-5xl md:text-6xl font-black tracking-tight">
-          Groovin<span className="text-fuchsia-400">Fly</span>
-        </h1>
-        <p className="mt-4 text-lg text-white/75">
-          Age gracefully. Party joyfully. Curated, high-energy trips for fearless women.
+    <main className="max-w-5xl mx-auto px-5 py-16">
+      <header className="text-center">
+        <p className="text-sm tracking-[0.25em] text-purple-300/80">
+          GROOVINFLY • 2025 - 2026 TRIPS
         </p>
+        <h1 className="mt-3 text-4xl md:text-6xl font-extrabold leading-tight">
+          Age gracefully. <br /> Party like the rockstar you are.
+        </h1>
+        <p className="mt-4 text-lg text-white/80">
+          High-energy, small-group travel for fearless women (40+).
+        </p>
+      </header>
 
-        <div className="mt-8">
-          <a
-            href="/reserve"
-            className="
-              inline-block px-8 py-3 rounded-xl font-bold
-              bg-fuchsia-500
-              shadow-[0_0_0_0_rgba(217,70,239,0.0)]
-              transition-all duration-300
-              hover:shadow-[0_0_28px_8px_rgba(217,70,239,0.55)]
-              hover:scale-[1.03]
-              focus:outline-none focus:ring-2 focus:ring-fuchsia-300/70
-            "
-          >
-            Count me in!
-          </a>
+      {/* Hero Section */}
+      <section className="relative w-full h-[70vh] md:h-[72vh] flex items-center justify-center overflow-hidden rounded-xl">
+        <Image
+          src="/images/groovin-fly.jpg"
+          alt="Festival with plane overhead"
+          fill
+          className="object-cover object-[center_80%]"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+
+        <div className="relative z-10 text-center text-white px-6">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
+            Where Festivals Meet Travel ✈🎡
+          </h2>
+          <p className="text-lg md:text-2xl mb-6 drop-shadow-md">
+            GroovinFly 2026 Trips Now Live
+          </p>
+          <div className="flex gap-3 justify-center">
+            <Link
+              href="/trips/2025"
+              className="px-6 py-3 rounded-2xl bg-purple-700 hover:bg-purple-800 text-white font-bold"
+            >
+              View 2025 Trips
+            </Link>
+            <Link
+              href="/trips/2026"
+              className="px-6 py-3 rounded-2xl bg-pink-500 hover:bg-pink-600 text-white font-bold"
+            >
+              View 2026 Trips
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Email capture */}
+      <section className="mt-12 md:mt-14 max-w-2xl mx-auto text-center bg-white/5 p-8 rounded-2xl shadow-lg">
+        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Stay in the Loop</h3>
+        <p className="text-white/70 mb-6">
+          Subscribe for exclusive trip updates, early access to bookings, and insider festival + travel news.
+        </p>
+        <div className="flex justify-center">
+          <div className="kit-form w-full max-w-md mx-auto">
+            {/* Kit embed (iframe keeps styles isolated and avoids clashes) */}
+            <iframe
+              src="https://groovin-fly.kit.com/5f4363dde4"
+              className="w-full h-[160px] md:h-[140px] border-0 rounded-lg"
+              scrolling="no"
+            />
+          </div>
         </div>
       </section>
     </main>
