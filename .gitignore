@@ -1,1 +1,21 @@
-node_modules
+cat >> .gitignore << 'EOF'
+# Node / Next
+node_modules/
+.next/
+out/
+dist/
+build.log
+
+# Env & local configs (never commit secrets)
+.env*
+!.env.example
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Tooling / hosts
+.vscode/
+.vercel/
+.netlify/
+EOF

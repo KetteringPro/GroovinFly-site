@@ -1,9 +1,0 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/trips/2025/nyc/page": "app/trips/2025/nyc/page.js",
-  "/trips/page": "app/trips/page.js",
-  "/trips/2025/salem/page": "app/trips/2025/salem/page.js",
-  "/trips/2026/page": "app/trips/2026/page.js",
-  "/trips/2025/portland-hampton/page": "app/trips/2025/portland-hampton/page.js",
-  "/trips/[slug]/page": "app/trips/[slug]/page.js"
-}
