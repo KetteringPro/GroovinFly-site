@@ -25,7 +25,7 @@ export default function BackNav({
       )}
       {show2025 && (
         <Link
-          href="/trips"
+          href="/trips/2025"
           className={`${base} ${current === "2025" ? active : idle}`}
         >
           2025 Trips

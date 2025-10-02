@@ -7,13 +7,22 @@ export default function PortlandHamptonTripPage() {
     <main className="max-w-4xl mx-auto px-5 py-8 space-y-10">
    
 
-      {/* Header */}
-      <div className="text-center">
-        <Image src="/logo.png" alt="GroovinFly" width={220} height={80} className="mx-auto" />
-        <h1 className="text-3xl font-bold text-purple-200 mt-4">
-          🎉 Portland → Hampton: Last Hurrah Before the Holiday Madness
-        </h1>
-      </div>
+     <div className="relative w-full h-[300px] rounded-2xl overflow-hidden">
+  <Image
+    src="/images/banners/port-hamp.jpg"
+    alt="Port Hampton 2025 Banner"
+    fill
+    sizes="100vw"
+    className="object-cover"
+    priority
+  />
+  <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center text-white px-4">
+    <h1 className="text-4xl font-bold text-purple-200 drop-shadow-lg">
+      🌊 Portland to Hampton Getaway
+    </h1>
+    <p className="text-lg mt-2">Last hurrah before the holidays!</p>
+  </div>
+</div>
 
       {/* Vibe & Inclusions */}
       <section className="bg-white/5 border border-white/10 rounded-2xl p-7 shadow-md space-y-4">
@@ -26,7 +35,7 @@ export default function PortlandHamptonTripPage() {
           <li>Lodging in Portland (Fri) + Hampton Beach (Sat)</li>
           <li>Magic Mike Live tickets + Ubers (Fri night)</li>
           <li>Afterparty in Old Port (drinks on your own)</li>
-          <li>Bar crawl &amp; boardwalk vibes in Hampton (Sat, drinks on your own)</li>
+          <li>Bar crawl vibes in Hampton (Sat, drinks on your own)</li>
           <li>Sunday brunch at The Goat (includes 1 cocktail)</li>
           <li>Rooms stocked with snacks &amp; water</li>
           <li>GroovinFly swag bag ✨</li>

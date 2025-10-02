@@ -1,17 +1,29 @@
 import Image from "next/image";
+import ComingSoon from "@/components/ComingSoon";
 
 export default function Miami2026Page() {
   return (
     <main className="max-w-4xl mx-auto px-5 py-8 space-y-10">
 
-      {/* Header */}
-      <div className="text-center">
-        <Image src="/logo.png" alt="GroovinFly" width={220} height={80} className="mx-auto" />
-        <h1 className="text-3xl font-bold text-purple-200 mt-4">
-          🎧 Miami, FL: Ultra Music Festival 2026
-        </h1>
-        <p className="text-white/70">Thu Mar 26 – Mon Mar 30, 2026 · Festival: Mar 27–29 · Bayfront Park</p>
-      </div>
+      {/* Hero Banner */}
+      <section aria-label="Hero banner" className="relative rounded-2xl overflow-hidden">
+        <Image
+          src="/images/miami/hero.jpg"
+          alt="Ultra Miami skyline and main stage"
+          width={1600}
+          height={640}
+          priority
+          className="w-full h-[300px] md:h-[420px] object-cover"
+        />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/40">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-purple-200 drop-shadow-lg">
+            🎧 Miami, FL: Ultra Music Festival 2026
+          </h1>
+          <p className="text-white/90 mt-2 text-lg md:text-xl">
+            Thu Mar 26 – Mon Mar 30, 2026 · Festival: Mar 27–29 · Bayfront Park
+          </p>
+        </div>
+      </section>
 
       {/* Vibe & Inclusions */}
       <section className="bg-white/5 border border-white/10 rounded-2xl p-7 shadow-md space-y-4">
@@ -48,23 +60,7 @@ export default function Miami2026Page() {
       </section>
 
       {/* Pricing & Booking */}
-      <section className="bg-white/5 border border-white/10 rounded-2xl p-7 shadow-md">
-        <h2 className="text-2xl font-semibold text-purple-200 mb-2">Pricing &amp; Booking</h2>
-        <p className="text-white/90">
-          💵 <strong>Standard Package</strong>: <strong>$1,199 Shared</strong> · <strong>$1,499 Solo</strong>
-        </p>
-        <p className="text-sm text-white/70">✔ Pay with card, Affirm, or Klarna — no extra fees.</p>
-
-        <div className="mt-4 flex gap-3 flex-wrap">
-          {/* TODO: replace # with Stripe payment links */}
-          <a href="#" className="bg-purple-700 hover:bg-purple-800 text-white font-semibold px-5 py-3 rounded-lg">
-            Reserve – Standard (Shared)
-          </a>
-          <a href="#" className="bg-white/5 hover:bg-white/10 text-white font-semibold px-5 py-3 rounded-lg border border-white/10">
-            Reserve – Standard (Solo)
-          </a>
-        </div>
-      </section>
+      <ComingSoon tripSlug="miami-2026" />
 
       {/* Add-ons */}
       <section className="bg-white/5 border border-white/10 rounded-2xl p-7 shadow-md">

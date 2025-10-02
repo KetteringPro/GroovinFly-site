@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import ImportantInfo from "../../../components/ImportantInfo";
 
 export default function Salem2025() {
   return (
@@ -28,8 +27,6 @@ export default function Salem2025() {
       <section>
         {/* Pricing & Booking content */}
       </section>
-
-      <ImportantInfo />
     </main>
   );
 }

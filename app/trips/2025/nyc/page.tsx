@@ -1,9 +1,11 @@
 import Image from "next/image";
 import ImportantInfo from "../../../../components/ImportantInfo";
+import Footer from "@/components/Footer";
 
 export default function NYCTripPage() {
   return (
-    <main className="max-w-4xl mx-auto px-5 py-8 space-y-10">
+    <>
+      <main className="max-w-4xl mx-auto px-5 py-8 space-y-10">
 
         {/* Banner */}
       <section className="relative overflow-hidden rounded-2xl border border-white/10">
@@ -90,5 +92,7 @@ export default function NYCTripPage() {
       {/* Important Info */}
       <ImportantInfo />
     </main>
+    <Footer />
+    </>
   );
 }

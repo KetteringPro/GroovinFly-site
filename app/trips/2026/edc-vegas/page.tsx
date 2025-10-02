@@ -1,14 +1,28 @@
 import Image from "next/image";
+import ComingSoon from "@/components/ComingSoon";
 
 export default function EDCLasVegas2026Page() {
   return (
     <main className="max-w-4xl mx-auto px-5 py-8 space-y-10">
 
-      <div className="text-center">
-        <Image src="/logo.png" alt="GroovinFly" width={220} height={80} className="mx-auto" />
-        <h1 className="text-3xl font-bold text-purple-200 mt-4">🎡 EDC Las Vegas 2026</h1>
-        <p className="text-white/70">Thu May 14 – Mon May 18, 2026</p>
-      </div>
+      <section aria-label="Hero banner" className="relative rounded-2xl overflow-hidden">
+        <Image
+          src="/images/edc/hero.jpg"
+          alt="EDC Las Vegas lights over the crowd"
+          width={1600}
+          height={640}
+          priority
+          className="w-full h-[300px] md:h-[420px] object-cover"
+        />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/40">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-purple-200 drop-shadow-lg">
+            🎡 EDC Las Vegas 2026
+          </h1>
+          <p className="text-white/90 mt-2 text-lg md:text-xl">
+            Thu May 14 – Mon May 18, 2026
+          </p>
+        </div>
+      </section>
 
       <section className="bg-white/5 border border-white/10 rounded-2xl p-7 shadow-md space-y-4">
         <h2 className="text-2xl font-semibold text-purple-200">The Vibe</h2>
@@ -37,21 +51,7 @@ export default function EDCLasVegas2026Page() {
         </div>
       </section>
 
-      <section className="bg-white/5 border border-white/10 rounded-2xl p-7 shadow-md">
-        <h2 className="text-2xl font-semibold text-purple-200 mb-2">Pricing &amp; Booking</h2>
-        <p className="text-white/90">Pricing TBA (shared bed / solo bed). Packages will be posted once ticket blocks are confirmed.</p>
-        <p className="text-sm text-white/70">✔ Pay with card, Affirm, or Klarna — no extra fees.</p>
-
-        <div className="mt-4 flex gap-3 flex-wrap">
-          {/* TODO: replace # with Stripe links when ready */}
-          <a href="#" className="bg-purple-700 hover:bg-purple-800 text-white font-semibold px-5 py-3 rounded-lg">
-            Reserve Interest – Shared
-          </a>
-          <a href="#" className="bg-white/5 hover:bg-white/10 text-white font-semibold px-5 py-3 rounded-lg border border-white/10">
-            Reserve Interest – Solo
-          </a>
-        </div>
-      </section>
+      <ComingSoon tripSlug="edc-vegas" />
     </main>
   );
 }

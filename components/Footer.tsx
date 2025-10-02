@@ -5,6 +5,7 @@ export default function Footer() {
         <p className="text-sm text-white/70">© {new Date().getFullYear()} GroovinFly. All rights reserved.</p>
 
         <nav className="flex gap-5 text-sm text-white/80">
+          <a href="/about" className="hover:text-fuchsia-400">About Us</a>
           <a href="/tos" className="hover:text-fuchsia-400">Terms of Service</a>
           <a href="/privacy" className="hover:text-fuchsia-400">Privacy Policy</a>
           <a href="/contact" className="hover:text-fuchsia-400">Contact Us</a>
