@@ -78,8 +78,24 @@ export async function createPrintfulOrder(input: CreateOrderInput) {
       items: input.items,
       shipping: input.shipping || "STANDARD",
       packing_slip: input.packing_slip,
-      confirm: input.confirm ?? true, // default: confirm immediately
+      confirm: input.confirm ?? false, // default: create as draft (not confirmed)
     }),
+  });
+}
+
+// Confirm a Printful order by ID
+export async function confirmPrintfulOrder(orderId: number | string) {
+  // See: https://developers.printful.com/docs/#operation/ConfirmOrder
+  return pfFetch(`/orders/${orderId}/confirm`, {
+    method: "POST",
+  });
+}
+
+// Cancel a Printful order by ID
+export async function cancelPrintfulOrder(orderId: number | string) {
+  // See: https://developers.printful.com/docs/#operation/CancelOrder
+  return pfFetch(`/orders/${orderId}`, {
+    method: "DELETE",
   });
 }
 
