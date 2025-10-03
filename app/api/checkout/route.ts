@@ -48,6 +48,7 @@ export async function POST(req: Request) {
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      phone_number_collection: { enabled: true },
       shipping_address_collection: { allowed_countries: ["US", "CA"] },
       line_items: [
         {
@@ -61,9 +62,9 @@ export async function POST(req: Request) {
           },
         },
       ],
-      success_url: `${NEXT_PUBLIC_APP_URL}/portal/orders?success=1`,
+      success_url: `${NEXT_PUBLIC_APP_URL}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${NEXT_PUBLIC_APP_URL}/merch?canceled=1`,
-      metadata: { product_variant_id: variantId, promoToken: promoToken || "" },
+      metadata: { kind: "merch", variant_id: variantId, product_variant_id: variantId, promoToken: promoToken || "" },
     });
 
     return NextResponse.json({ url: session.url });
