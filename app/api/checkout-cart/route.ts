@@ -1,5 +1,3 @@
-
-
 // app/api/checkout-cart/route.ts
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
@@ -25,6 +23,7 @@ type CartItem = {
   product_id?: string;
   trip_key?: string;
   option?: string;
+  priceId?: string;
 };
 
 export async function POST(req: Request) {
@@ -36,31 +35,23 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Cart is empty" }, { status: 400 });
     }
 
-    const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = items.map((it) => ({
-      quantity: Math.max(1, Number(it.qty || 1)),
-      price_data: {
-        currency: (it.currency || "usd").toLowerCase(),
-        unit_amount: Math.max(0, Number(it.unit_amount_cents || 0)),
-        product_data: {
-          name: it.name,
-          metadata: {
-            kind: it.kind,
-            id: it.id,
-            product_id: it.product_id || "",
-            trip_key: it.trip_key || "",
-            option: it.option || "",
-          },
-        },
-      },
-    }));
-
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
-      line_items,
-      success_url: `${origin}/cart?status=success` ,
+      phone_number_collection: { enabled: true },
+      shipping_address_collection: { allowed_countries: ["US", "CA"] },
+      line_items: body.items.map((it: { priceId: string; qty?: number }) => ({
+        price: it.priceId,
+        quantity: Math.max(1, Number(it.qty || 1)),
+      })),
+      success_url: `${origin}/cart?status=success`,
       cancel_url: `${origin}/cart?status=cancel`,
+      metadata: {
+        kind: "merch",
+        item_count: String(body.items.length),
+        ids: body.items.map((it: { priceId: string }) => it.priceId).join(","),
+      },
     });
 
     return NextResponse.json({ url: session.url });
