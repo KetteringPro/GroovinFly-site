@@ -1,74 +1,79 @@
-// app/api/checkout/route.ts
+// app/api/checkout-cart/route.ts
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 import { NextResponse } from "next/server";
-import { supabaseServer } from "@/lib/supabaseServer";
 import Stripe from "stripe";
 
-function requireEnv(name: string): string {
-  const val = process.env[name];
-  if (!val || val.trim() === "") {
-    throw new Error(`Missing required env: ${name}`);
-  }
-  return val;
+function env(name: string): string {
+  const v = process.env[name];
+  if (!v) throw new Error(`Missing required env: ${name}`);
+  return v;
 }
 
 export async function POST(req: Request) {
   try {
-    const STRIPE_SECRET_KEY = requireEnv("STRIPE_SECRET_KEY");
-    const NEXT_PUBLIC_APP_URL = requireEnv("NEXT_PUBLIC_APP_URL");
+    const STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY");
+    const APP_URL = env("NEXT_PUBLIC_APP_URL");
+    const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2025-08-27.basil' as Stripe.LatestApiVersion });
 
-    const stripe = new Stripe(STRIPE_SECRET_KEY);
-
-    const { variantId, qty = 1, promoToken } = (await req.json()) as {
-      variantId?: string;
-      qty?: number;
-      promoToken?: string;
+    const body = (await req.json()) as {
+      items: Array<{
+        id?: string;
+        priceId?: string;
+        qty?: number;
+        name?: string;
+        variant_name?: string;
+        unit_amount_cents?: number;
+        currency?: string;
+      }>;
     };
-    if (!variantId) throw new Error("Missing variantId");
 
-    const { data: variant, error: vErr } = await supabaseServer
-      .from("product_variants")
-      .select("id,variant_name,price_cents,currency,product_id,active")
-      .eq("id", variantId)
-      .single();
-    if (vErr) throw new Error(`Variant query failed: ${vErr.message}`);
-    if (!variant) throw new Error("Variant not found");
-    if (!variant.active) throw new Error("Variant is inactive");
+    const items = Array.isArray(body.items) ? body.items : [];
+    if (items.length === 0) throw new Error("Cart is empty");
 
-    const { data: product, error: pErr } = await supabaseServer
-      .from("products")
-      .select("name,active")
-      .eq("id", variant.product_id)
-      .single();
-    if (pErr) throw new Error(`Product query failed: ${pErr.message}`);
-    if (!product) throw new Error("Product not found");
-    if (!product.active) throw new Error("Product is inactive");
+    const line_items = items.map((it) => {
+      const quantity = Math.max(1, Number(it.qty || 1));
+      if (it.priceId) {
+        return { price: it.priceId, quantity } as Stripe.Checkout.SessionCreateParams.LineItem;
+      }
+      if (typeof it.unit_amount_cents === "number" && it.currency) {
+        return {
+          quantity,
+          price_data: {
+            currency: (it.currency || "usd").toLowerCase(),
+            unit_amount: it.unit_amount_cents,
+            product_data: {
+              name: it.name || it.variant_name || `Item ${it.id ?? ""}`,
+              metadata: {
+                kind: "merch",
+                variant_id: it.id ?? "",
+              },
+            },
+          },
+        } as Stripe.Checkout.SessionCreateParams.LineItem;
+      }
+      throw new Error("Invalid cart item: missing priceId or unit_amount_cents/currency");
+    });
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       phone_number_collection: { enabled: true },
       shipping_address_collection: { allowed_countries: ["US", "CA"] },
-      line_items: [
-        {
-          quantity: qty,
-          price_data: {
-            currency: variant.currency || "usd",
-            unit_amount: variant.price_cents,
-            product_data: {
-              name: `${product.name} — ${variant.variant_name}`,
-            },
-          },
-        },
-      ],
-      success_url: `${NEXT_PUBLIC_APP_URL}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${NEXT_PUBLIC_APP_URL}/merch?canceled=1`,
-      metadata: { kind: "merch", variant_id: variantId, product_variant_id: variantId, promoToken: promoToken || "" },
+      line_items,
+      allow_promotion_codes: true,
+      success_url: `${APP_URL}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${APP_URL}/cart?status=cancel`,
+      metadata: {
+        kind: "merch",
+        item_count: String(items.length),
+        variant_ids: items.map((it) => it.id ?? it.priceId ?? "").join(","),
+      },
     });
 
     return NextResponse.json({ url: session.url });
   } catch (e: any) {
-    return NextResponse.json({ error: e?.message || "Unknown error" }, { status: 400 });
+    console.error("[checkout-cart]", e);
+    return NextResponse.json({ error: e?.message || "Checkout failed" }, { status: 400 });
   }
 }
