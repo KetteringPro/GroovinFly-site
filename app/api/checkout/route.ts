@@ -17,56 +17,41 @@ export async function POST(req: Request) {
     const APP_URL = env("NEXT_PUBLIC_APP_URL");
     const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2025-08-27.basil' as Stripe.LatestApiVersion });
 
-    const body = (await req.json()) as {
-      items: Array<{
-        id?: string;
-        priceId?: string;
-        qty?: number;
-        name?: string;
-        variant_name?: string;
-        unit_amount_cents?: number;
-        currency?: string;
-      }>;
-    };
+    let body: any = null;
+    try {
+      body = await req.json();
+    } catch (parseErr) {
+      console.error("[checkout-cart] JSON parse error", parseErr);
+      return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+    }
 
-    const items = Array.isArray(body.items) ? body.items : [];
-    if (items.length === 0) throw new Error("Cart is empty");
+    const items = Array.isArray(body?.items) ? body.items : [];
+    if (items.length === 0) {
+      console.error("[checkout-cart] Empty items array", body);
+      return NextResponse.json({ error: "Cart is empty" }, { status: 400 });
+    }
 
-    const line_items = items.map((it) => {
-      const quantity = Math.max(1, Number((it as any).qty || 1));
+    const line_items = items.map((it: any) => {
+      const quantity = Math.max(1, Number(it?.qty || 1));
 
-      // 1) If a Stripe priceId is provided, use it directly
-      if ((it as any).priceId) {
-        return { price: (it as any).priceId, quantity } as Stripe.Checkout.SessionCreateParams.LineItem;
+      // Prefer a Stripe Price if present
+      if (it?.priceId) {
+        return { price: it.priceId, quantity } as Stripe.Checkout.SessionCreateParams.LineItem;
       }
 
-      // 2) Otherwise build price_data from cart values (tolerate various naming)
+      // Build price_data from various naming conventions
       const amount = Number(
-        (it as any).unit_amount_cents ??
-        (it as any).unit_cents ??
-        (it as any).price_cents ??
-        (it as any).unitAmountCents ??
-        (it as any).priceCents
+        it?.unit_amount_cents ?? it?.unit_cents ?? it?.price_cents ?? it?.unitAmountCents ?? it?.priceCents
       );
-
-      const currencyRaw =
-        (it as any).currency ??
-        (it as any).unit_currency ??
-        (it as any).currency_code ??
-        (it as any).currencyCode ??
-        "usd";
-
       if (!Number.isFinite(amount)) {
         throw new Error("Invalid cart item: missing amount (unit_amount_cents/price_cents)");
       }
 
-      const currency = String(currencyRaw).toLowerCase();
+      const currency = String(
+        it?.currency ?? it?.unit_currency ?? it?.currency_code ?? it?.currencyCode ?? 'usd'
+      ).toLowerCase();
 
-      const name =
-        (it as any).name ||
-        (it as any).variant_name ||
-        (it as any).variantName ||
-        `Item ${(it as any).id ?? ""}`;
+      const name = it?.name || it?.variant_name || it?.variantName || `Item ${it?.id ?? ''}`;
 
       return {
         quantity,
@@ -75,33 +60,31 @@ export async function POST(req: Request) {
           unit_amount: Math.round(amount),
           product_data: {
             name,
-            metadata: {
-              kind: "merch",
-              variant_id: (it as any).id ?? "",
-            },
+            metadata: { kind: 'merch', variant_id: it?.id ?? '' },
           },
         },
       } as Stripe.Checkout.SessionCreateParams.LineItem;
     });
 
     const session = await stripe.checkout.sessions.create({
-      mode: "payment",
+      mode: 'payment',
       phone_number_collection: { enabled: true },
-      shipping_address_collection: { allowed_countries: ["US", "CA"] },
+      shipping_address_collection: { allowed_countries: ['US', 'CA'] },
       line_items,
       allow_promotion_codes: true,
       success_url: `${APP_URL}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${APP_URL}/cart?status=cancel`,
       metadata: {
-        kind: "merch",
+        kind: 'merch',
         item_count: String(items.length),
-        variant_ids: items.map((it) => it.id ?? it.priceId ?? "").join(","),
+        variant_ids: items.map((it: any) => it?.id ?? it?.priceId ?? '').join(','),
       },
     });
 
     return NextResponse.json({ url: session.url });
   } catch (e: any) {
-    console.error("[checkout-cart]", e);
-    return NextResponse.json({ error: e?.message || "Checkout failed" }, { status: 400 });
+    console.error('[checkout-cart] Fatal', e);
+    // Return 400 with message so the browser shows a helpful error instead of a generic 500
+    return NextResponse.json({ error: e?.message || 'Checkout failed' }, { status: 400 });
   }
 }
