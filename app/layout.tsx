@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: "High-energy travel for fearless women.",
       url: "https://groovinfly.com",
       siteName: "GroovinFly",
-      images: [{ url: "/social-share.jpg", width: 1200, height: 630 }],
+      images: [{ url: "/social-share.png", width: 1200, height: 630 }],
       type: "website",
       locale: "en_US",
     },
@@ -31,10 +31,41 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "GroovinFly — Join the Groovers",
       description: "High-energy travel for fearless women.",
-      images: ["/social-share.jpg"],
+      images: ["/social-share.png"],
     },
   };
 }
+
+// Example for app/layout.tsx (Next.js App Router)
+
+export const metadata = {
+  title: "GroovinFly – Curated Trips & Festival Experiences",
+  description: "Join us for unforgettable trips: Coachella, Ultra Miami, Salem Halloween & more. Book your vibe at GroovinFly.com ✈️🎶",
+  metadataBase: new URL("https://groovinfly.com"),
+  openGraph: {
+    title: "GroovinFly – Curated Trips & Festival Experiences",
+    description: "Epic festival trips and curated getaways. Secure your spot today.",
+    url: "https://groovinfly.com",
+    siteName: "GroovinFly",
+    images: [
+      {
+        url: "https://groovinfly.com/images/og/og-banner.png", // ← add a strong banner image to /public/images/og/
+        width: 1200,
+        height: 630,
+        alt: "GroovinFly Trips Preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@GroovinFly", // if you set one up later
+    title: "GroovinFly – Curated Trips & Festival Experiences",
+    description: "Book your vibe: Coachella, Ultra Miami, Salem Halloween & more.",
+    images: ["https://groovinfly.com/images/og/og-banner.png"],
+  },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
