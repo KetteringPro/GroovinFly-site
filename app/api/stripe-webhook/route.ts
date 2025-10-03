@@ -8,7 +8,13 @@ import type { PrintfulItem } from "@/lib/printful";
 export const runtime = "nodejs"; // ensure Node (not edge) so we can verify signature
 
 export async function POST(req: Request) {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    console.error("[checkout-cart] Missing STRIPE_SECRET_KEY env var");
+    return new Response("Server misconfigured: STRIPE_SECRET_KEY", { status: 500 });
+  }
   const stripe = getStripe();
+
   const sig = req.headers.get("stripe-signature");
   const whSecret = process.env.STRIPE_WEBHOOK_SECRET;
   if (!sig || !whSecret) {

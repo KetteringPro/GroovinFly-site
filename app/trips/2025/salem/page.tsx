@@ -27,7 +27,7 @@ export default function SalemTripPage() {
             <h1 className="text-4xl font-bold text-purple-200 drop-shadow-lg">
               🎃 Salem: Mystery, Magic &amp; Mayhem
             </h1>
-            <p className="text-lg mt-2">October 17–20, 2025</p>
+            <p className="text-lg mt-2">October 24–27, 2025</p>
           </div>
         </div>
 
@@ -67,7 +67,7 @@ export default function SalemTripPage() {
           <h2 className="text-2xl font-semibold text-purple-200 mb-2">Pricing & Booking</h2>
           <div className="text-white/90 mb-3">
             <div className="font-semibold">Salem, MA</div>
-            <div>October 17–20, 2025</div>
+            <div>October 24–27, 2025</div>
           </div>
           <p className="text-white/90 mb-1">
             💵 <strong>$399 Per Person – Shared Bed</strong><br />

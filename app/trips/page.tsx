@@ -14,7 +14,7 @@ const trips: Trip[] = [
   {
     href: "/trips/salem-2025",
     title: "🎃 Salem: Mystery, Magic & Mayhem",
-    dates: "Oct 17–20, 2025",
+    dates: "Oct 24–27, 2025",
     blurb: "Spooky-chic Halloween weekend with dinner, tours & witchy vibes.",
     image: { src: "/images/salem/cover.jpg", alt: "Salem streets at Halloween" },
   },
