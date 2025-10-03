@@ -33,27 +33,55 @@ export async function POST(req: Request) {
     if (items.length === 0) throw new Error("Cart is empty");
 
     const line_items = items.map((it) => {
-      const quantity = Math.max(1, Number(it.qty || 1));
-      if (it.priceId) {
-        return { price: it.priceId, quantity } as Stripe.Checkout.SessionCreateParams.LineItem;
+      const quantity = Math.max(1, Number((it as any).qty || 1));
+
+      // 1) If a Stripe priceId is provided, use it directly
+      if ((it as any).priceId) {
+        return { price: (it as any).priceId, quantity } as Stripe.Checkout.SessionCreateParams.LineItem;
       }
-      if (typeof it.unit_amount_cents === "number" && it.currency) {
-        return {
-          quantity,
-          price_data: {
-            currency: (it.currency || "usd").toLowerCase(),
-            unit_amount: it.unit_amount_cents,
-            product_data: {
-              name: it.name || it.variant_name || `Item ${it.id ?? ""}`,
-              metadata: {
-                kind: "merch",
-                variant_id: it.id ?? "",
-              },
+
+      // 2) Otherwise build price_data from cart values (tolerate various naming)
+      const amount = Number(
+        (it as any).unit_amount_cents ??
+        (it as any).unit_cents ??
+        (it as any).price_cents ??
+        (it as any).unitAmountCents ??
+        (it as any).priceCents
+      );
+
+      const currencyRaw =
+        (it as any).currency ??
+        (it as any).unit_currency ??
+        (it as any).currency_code ??
+        (it as any).currencyCode ??
+        "usd";
+
+      if (!Number.isFinite(amount)) {
+        throw new Error("Invalid cart item: missing amount (unit_amount_cents/price_cents)");
+      }
+
+      const currency = String(currencyRaw).toLowerCase();
+
+      const name =
+        (it as any).name ||
+        (it as any).variant_name ||
+        (it as any).variantName ||
+        `Item ${(it as any).id ?? ""}`;
+
+      return {
+        quantity,
+        price_data: {
+          currency,
+          unit_amount: Math.round(amount),
+          product_data: {
+            name,
+            metadata: {
+              kind: "merch",
+              variant_id: (it as any).id ?? "",
             },
           },
-        } as Stripe.Checkout.SessionCreateParams.LineItem;
-      }
-      throw new Error("Invalid cart item: missing priceId or unit_amount_cents/currency");
+        },
+      } as Stripe.Checkout.SessionCreateParams.LineItem;
     });
 
     const session = await stripe.checkout.sessions.create({
