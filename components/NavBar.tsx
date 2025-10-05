@@ -1,33 +1,46 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function NavBar() {
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-200">
-      <div className="max-w-5xl mx-auto px-5 py-3 flex justify-between items-center">
-        <Link href="/" className="text-purple-800 font-bold text-lg hover:text-purple-900">
-          GroovinFly
-        </Link>
-        <div className="flex gap-4">
-          <Link
-            href="/"
-            className="text-gray-700 hover:text-purple-700 font-medium"
-          >
-            Home
+    <header className="sticky top-0 z-40 bg-black/60 backdrop-blur supports-[backdrop-filter]:bg-black/40">
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="h-14 flex flex-wrap items-center gap-2">
+          {/* Left: logo */}
+          <Link href="/" className="flex items-center shrink-0">
+            <img
+              src="/icon-512.png"
+              alt="GroovinFly"
+              className="h-7 w-auto"
+              decoding="async"
+              loading="eager"
+              style={{ backgroundColor: "transparent" }}
+            />
           </Link>
-          <Link
-            href="/trips"
-            className="text-gray-700 hover:text-purple-700 font-medium"
-          >
-            2025 Trips
-          </Link>
-          <Link
-            href="/trips/2026"
-            className="text-gray-700 hover:text-purple-700 font-medium"
-          >
-            2026 Preview
-          </Link>
+
+          {/* Center: primary links (Home, 2025, 2026, Merch) */}
+          <div className="ml-2 flex items-center gap-2 flex-wrap">
+            <Link href="/" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0">
+              Home
+            </Link>
+            <Link href="/trips" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0">
+              2025
+            </Link>
+            <Link href="/trips/2026" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0">
+              2026
+            </Link>
+            <Link
+              href="/merch"
+              className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0"
+            >
+              Merch
+            </Link>
+          </div>
+
+          {/* Right side intentionally empty here; Bag is handled by floating toolbar in layout */}
+          <div className="ml-auto" />
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }

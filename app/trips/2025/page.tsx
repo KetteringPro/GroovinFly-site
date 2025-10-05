@@ -66,9 +66,15 @@ export default function TripsListPage() {
               key={t.href}
               className="rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 border border-white/10 transition"
             >
-              <div className="relative w-full h-48">
-                <Image src={t.image.src} alt={t.image.alt} fill className="object-cover" priority />
-              </div>
+              <Link href={t.href} className="group relative block w-full h-48" aria-label={`View ${t.title}`}>
+                <Image
+                  src={t.image.src}
+                  alt={t.image.alt}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  priority
+                />
+              </Link>
               <div className="p-5 flex-1 flex flex-col">
                 <h2 className="text-lg font-semibold text-purple-200 whitespace-pre-line">{t.title}</h2>
                 <div className="text-sm text-white/70">{t.dates}</div>

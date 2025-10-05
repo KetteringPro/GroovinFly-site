@@ -1,9 +1,9 @@
-// app/trips/2026/coachella-weekend-2/page.tsx
 'use client';
 
 import React from 'react';
 import Link from 'next/link'; // (kept; safe if unused)
 import Footer from "../../../../components/Footer";
+import Image from 'next/image';
 
 // --- Checkout links + soft inventory (Coachella) ---
 type TripOptionKey = string;
@@ -64,10 +64,23 @@ export default function Coachella2026Page() {
             </ul>
 
             {/* Gallery in the Vibe block — stacks on mobile */}
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-              <img src="/images/coachella/gallery-1.jpg" alt="Festival lights and crowd" className="w-full h-56 md:h-64 object-cover rounded-2xl" />
-              <img src="/images/coachella/gallery-2.jpg" alt="Palm trees at sunset" className="w-full h-56 md:h-64 object-cover rounded-2xl" />
-              <img src="/images/coachella/gallery-3.jpg" alt="Main stage fireworks" className="w-full h-56 md:h-64 object-cover rounded-2xl" />
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+              {[
+                { src: '/images/coachella/gallery-1.jpg', alt: 'Festival lights and crowd' },
+                { src: '/images/coachella/gallery-2.jpg', alt: 'Palm trees at sunset' },
+                { src: '/images/coachella/gallery-3.jpg', alt: 'Main stage fireworks' }
+              ].map((img, i) => (
+                <figure key={img.src} className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw"
+                    className="object-cover"
+                    priority={i < 2}
+                  />
+                </figure>
+              ))}
             </div>
 
             <div className="mt-5 text-sm opacity-80">

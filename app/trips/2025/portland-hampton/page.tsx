@@ -24,6 +24,30 @@ export default function PortlandHamptonTripPage() {
   </div>
 </div>
 
+      {/* Gallery */}
+      <section aria-labelledby="portland-hampton-gallery" className="space-y-4">
+        <h2 id="portland-hampton-gallery" className="text-2xl font-semibold text-purple-200">Gallery</h2>
+        <p className="text-white/80 text-sm">A quick look at the weekend vibes — Portland city nights, Hampton beach mornings, and everything in between.</p>
+        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          {[
+            '/images/portland-hampton/gallery-1.jpg',
+            '/images/portland-hampton/gallery-2.jpg',
+            '/images/portland-hampton/gallery-3.jpg',
+          ].map((src, i) => (
+            <figure key={src} className="relative aspect-[4/3] overflow-hidden rounded-xl">
+              <Image
+                src={src}
+                alt={`Portland–Hampton gallery image ${i + 1}`}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw"
+                className="object-cover"
+                priority={i < 2}
+              />
+            </figure>
+          ))}
+        </div>
+      </section>
+
       {/* Vibe & Inclusions */}
       <section className="bg-white/5 border border-white/10 rounded-2xl p-7 shadow-md space-y-4">
         <h2 className="text-2xl font-semibold text-purple-200">The Vibe</h2>

@@ -47,10 +47,23 @@ export default function SalemTripPage() {
             <li>Optional add-ons: tarot readings, VIP party tickets (TBD)</li>
           </ul>
 
-          <div className="flex gap-3 my-3">
-            <Image src="/images/salem/pumpkin.jpg" alt="Salem pumpkin" width={1200} height={800} className="rounded-lg object-cover w-1/3 h-[220px]" priority />
-            <Image src="/images/salem/party.jpg" alt="Halloween party" width={1200} height={800} className="rounded-lg object-cover w-1/3 h-[220px]" />
-            <Image src="/images/salem/village.jpg" alt="Salem village" width={1200} height={800} className="rounded-lg object-cover w-1/3 h-[220px]" />
+          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 my-3">
+            {[
+              { src: '/images/salem/pumpkin.jpg', alt: 'Salem pumpkin' },
+              { src: '/images/salem/party.jpg', alt: 'Halloween party' },
+              { src: '/images/salem/village.jpg', alt: 'Salem village' }
+            ].map((img, i) => (
+              <figure key={img.src} className="relative aspect-[4/3] overflow-hidden rounded-xl">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw"
+                  className="object-cover"
+                  priority={i < 2}
+                />
+              </figure>
+            ))}
           </div>
 
           <div className="text-sm italic text-white/70 border-t border-white/10 pt-3">

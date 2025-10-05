@@ -50,10 +50,10 @@ export default function Stagecoach2026Page() {
           <li>Rooms stocked with snacks &amp; water + GroovinFly swag bag ✨</li>
         </ul>
 
-        <div className="flex gap-3 my-2">
-          <Image src="/images/stagecoach/stage.jpg" alt="Festival stage with crowd" width={1200} height={800} className="rounded-lg object-cover w-1/3 h-[220px]" />
-          <Image src="/images/stagecoach/group.jpg" alt="Group enjoying the festival" width={1200} height={800} className="rounded-lg object-cover w-1/3 h-[220px]" />
-          <Image src="/images/stagecoach/desert.jpg" alt="Desert sunset in Indio" width={1200} height={800} className="rounded-lg object-cover w-1/3 h-[220px]" />
+        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 my-2">
+          <Image src="/images/stagecoach/stage.jpg" alt="Festival stage with crowd" width={1200} height={800} className="rounded-lg object-cover w-full h-auto" />
+          <Image src="/images/stagecoach/group.jpg" alt="Group enjoying the festival" width={1200} height={800} className="rounded-lg object-cover w-full h-auto" />
+          <Image src="/images/stagecoach/desert.jpg" alt="Desert sunset in Indio" width={1200} height={800} className="rounded-lg object-cover w-full h-auto" />
         </div>
 
         <div className="text-sm italic text-white/70 border-t border-white/10 pt-3">

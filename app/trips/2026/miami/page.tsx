@@ -40,10 +40,23 @@ export default function Miami2026Page() {
           <li>Optional add-ons: pre/post-party passes, beach day, Wynwood crawl (TBD)</li>
         </ul>
 
-        <div className="flex gap-3 my-2">
-          <Image src="/images/miami/crowd.jpg"  alt="EDM crowd at sunset" width={1200} height={800} className="rounded-lg object-cover w-1/3 h-[220px]" />
-          <Image src="/images/miami/dj.jpg"     alt="DJ performing with lasers" width={1200} height={800} className="rounded-lg object-cover w-1/3 h-[220px]" />
-          <Image src="/images/miami/skyline.jpg" alt="Miami skyline at dusk"    width={1200} height={800} className="rounded-lg object-cover w-1/3 h-[220px]" />
+        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 my-2">
+          {[
+            { src: '/images/miami/crowd.jpg',  alt: 'EDM crowd at sunset' },
+            { src: '/images/miami/dj.jpg',     alt: 'DJ performing with lasers' },
+            { src: '/images/miami/skyline.jpg', alt: 'Miami skyline at dusk' }
+          ].map((img, i) => (
+            <figure key={img.src} className="relative aspect-[4/3] overflow-hidden rounded-lg">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw"
+                className="object-cover"
+                priority={i < 2}
+              />
+            </figure>
+          ))}
         </div>
 
         <div className="text-sm italic text-white/70 border-t border-white/10 pt-3">
