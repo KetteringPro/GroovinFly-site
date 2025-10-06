@@ -77,12 +77,6 @@ export default async function Page() {
   return (
     <main className="min-h-screen bg-white text-black">
       <div className="max-w-6xl mx-auto px-4 py-10">
-        <div className="mb-6 flex items-center justify-between">
-          <nav className="flex gap-2 text-sm">
-            <a href="/" className="inline-block px-3 py-1.5 rounded-full bg-neutral-200 hover:bg-neutral-300 text-black">Home</a>
-            <a href="/#trips" className="inline-block px-3 py-1.5 rounded-full bg-neutral-200 hover:bg-neutral-300 text-black">Trips</a>
-          </nav>
-        </div>
         <h1 className="text-4xl font-bold mb-8">GroovinFly Merch</h1>
         {sorted.length === 0 ? (
           <p className="opacity-70">No merch to display yet. Check back soon.</p>
