@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import { CartBadge } from "@/components/CartBadge";
-import { UserPortalButton} from "@/components/userportalbutton";
+
 
 export const metadata: Metadata = {
   title: "GroovinFly — Age gracefully. Party joyfully.",
