@@ -23,7 +23,7 @@ export default function NavBar() {
             <Link href="/" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0">
               Home
             </Link>
-            <Link href="/trips" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0">
+            <Link href="/trips/2025" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0">
               2025
             </Link>
             <Link href="/trips/2026" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0">
