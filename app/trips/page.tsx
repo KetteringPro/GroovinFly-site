@@ -12,21 +12,21 @@ import Link from "next/link";
 
 const trips: Trip[] = [
   {
-    href: "/trips/salem-2025",
+    href: "/trips/2025/salem",
     title: "🎃 Salem: Mystery, Magic & Mayhem",
     dates: "Oct 24–27, 2025",
     blurb: "Spooky-chic Halloween weekend with dinner, tours & witchy vibes.",
     image: { src: "/images/salem/cover.jpg", alt: "Salem streets at Halloween" },
   },
   {
-    href: "/trips/portland-hampton-2025",
+    href: "/trips/2025/portland-hampton",
     title: "🎉 Portland → Hampton: Last Hurrah",
     dates: "Weekend getaway",
     blurb: "Magic Mike Live, Old Port afterparty, Hampton boardwalk, Sun brunch.",
     image: { src: "/images/portland-hampton/cover.jpg", alt: "Hampton boardwalk at sunset" },
   },
   {
-    href: "/trips/nyc-2025",
+    href: "/trips/2025/nyc",
     title: "🎄 NYC Holiday Trip: Holidays in the City",
     dates: "Holiday season",
     blurb: "Times Square stay, welcome dinner, Rockefeller Tree, Rockettes (premium).",
