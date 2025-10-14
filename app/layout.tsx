@@ -6,8 +6,32 @@ import { CartBadge } from "@/components/CartBadge";
 
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://groovinfly.com"),
   title: "GroovinFly — Age gracefully. Party joyfully.",
   description: "High-energy, small-group trips for fearless women.",
+  openGraph: {
+    title: "GroovinFly — Age gracefully. Party joyfully.",
+    description:
+      "Festival & yacht adventures designed for women who love to travel, dance, and live free.",
+    url: "https://groovinfly.com/",
+    siteName: "GroovinFly",
+    type: "website",
+    images: [
+      {
+        url: "https://groovinfly.com/images/og/Groovin-Fly.jpg",
+        width: 1200,
+        height: 630,
+        alt: "GroovinFly women dancing under festival lights",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GroovinFly — Age gracefully. Party joyfully.",
+    description:
+      "Festival & yacht adventures designed for women who love to travel, dance, and live free.",
+    images: ["https://groovinfly.com/images/og/Groovin-Fly.jpg"],
+  },
 };
 
 export default function RootLayout({
