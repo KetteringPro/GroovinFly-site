@@ -88,25 +88,13 @@ export default function SalemTripPage() {
           </p>
           <p className="text-sm text-white/70">✔ Flexible payments available at checkout (Klarna / Affirm)</p>
 
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            <a
-              href={getCheckoutLink("SALEM", "SHARED")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-full px-5 py-3 rounded-lg bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold"
-              aria-label="Checkout for Salem shared bed option"
-            >
-              Let's Groove! Shared $399
-            </a>
-            <a
-              href={getCheckoutLink("SALEM", "SOLO")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-full px-5 py-3 rounded-lg bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold"
-              aria-label="Checkout for Salem solo bed option"
-            >
-              Let's Groove! Solo $699
-            </a>
+          <div className="mt-4">
+            <button disabled className="w-full px-5 py-3 rounded-lg bg-gray-500 text-white font-semibold cursor-not-allowed">
+              SOLD OUT
+            </button>
+            <p className="text-sm text-gray-400 mt-2 text-center">
+              Thank you to everyone who joined our Salem Halloween interest list — this trip is now sold out!
+            </p>
           </div>
           <p className="text-xs text-white/60 mt-2">Secure checkout via Stripe.</p>
         </section>
