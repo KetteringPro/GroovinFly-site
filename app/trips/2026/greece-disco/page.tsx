@@ -5,11 +5,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Disco Yacht Week — Greece (Aug 8–15, 2026) | GroovinFly",
   description:
-    "Seven days of disco & house on the Aegean: float parties, circle raft brunches, and hand-picked DJs. Shared, Saloon, or Private cabins.",
+    "Seven days of disco & house on the Aegean: float parties, circle raft brunches, and hand-picked DJs. Includes TWO exclusive Discophoria parties.",
   openGraph: {
     title: "Disco Yacht Week — Greece 2026 | GroovinFly",
     description:
-      "Let's get groovy in Greece—sail by day, dance by night. Discophoria route with DJs & floating decks.",
+      "Let's get groovy in Greece — sail by day, dance by night. Includes TWO exclusive Discophoria parties.",
     images: [{ url: "/images/yacht-greece/greece-disco.jpg" }],
   },
 };
@@ -37,13 +37,18 @@ export default function Page() {
       <section className="mt-8 grid gap-6 md:grid-cols-[1.2fr_.8fr]">
         <div>
           <p className="text-white/90">
-            Let's get groovy in Greece. Set sail on a week-long disco dream—sunshine, house beats,
-            and crystal-clear Aegean water. GroovinFly spins the classic Yacht Week format with a
-            funky soundtrack: circle-raft brunches, floating DJ decks, and island sunsets.
+            Let's get groovy in Greece. Set sail on a week-long disco dream — sunshine, house beats,
+            and crystal-clear Aegean water. Your trip includes access to{" "}
+            <strong>TWO exclusive Discophoria parties</strong> — one onboard and one on shore!
+          </p>
+
+          <p className="mt-4 text-fuchsia-400 font-semibold">
+            🪩 Includes access to TWO exclusive Discophoria parties — one onboard and one on shore!
           </p>
 
           {/* Highlights */}
           <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-white/90">
+            <li>✦ Includes TWO Discophoria events</li>
             <li>✦ 7 days of Disco & House</li>
             <li>✦ Circle raft brunch</li>
             <li>✦ Floating DJ deck</li>
@@ -85,19 +90,24 @@ export default function Page() {
           <h2 className="text-lg font-semibold text-purple-200">Trip Facts</h2>
           <dl className="mt-3 space-y-2 text-white/85">
             <div className="flex justify-between gap-4">
-              <dt>Dates</dt><dd>Aug 8–15, 2026</dd>
+              <dt>Dates</dt>
+              <dd>Aug 8–15, 2026</dd>
             </div>
             <div className="flex justify-between gap-4">
-              <dt>Capacity</dt><dd>10 guests</dd>
+              <dt>Capacity</dt>
+              <dd>9 paying guests + host</dd>
             </div>
             <div className="flex justify-between gap-4">
-              <dt>Cabins</dt><dd>4 doubles + 2 saloon berths</dd>
+              <dt>Cabins</dt>
+              <dd>4 doubles + 2 saloon berths</dd>
             </div>
             <div className="flex justify-between gap-4">
-              <dt>Includes</dt><dd>Skipper, provisioning & mixers</dd>
+              <dt>Includes</dt>
+              <dd>Skipper, provisioning & mixers</dd>
             </div>
             <div className="flex justify-between gap-4">
-              <dt>Vibe</dt><dd>Disco & house, island sunsets</dd>
+              <dt>Vibe</dt>
+              <dd>Disco & house, island sunsets</dd>
             </div>
           </dl>
         </aside>
@@ -107,23 +117,48 @@ export default function Page() {
       <section className="mt-10">
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="relative w-full h-56 md:h-64 rounded-2xl overflow-hidden border border-white/10">
-            <Image src="/images/yacht-greece/greece-disco-1.jpg" alt="Greece deck party" fill className="object-cover" />
+            <Image
+              src="/images/yacht-greece/greece-disco-1.jpg"
+              alt="Greece deck party"
+              fill
+              className="object-cover"
+            />
           </div>
           <div className="relative w-full h-56 md:h-64 rounded-2xl overflow-hidden border border-white/10">
-            <Image src="/images/yacht-greece/greece-disco-2.jpg" alt="Floating DJ deck" fill className="object-cover" />
+            <Image
+              src="/images/yacht-greece/greece-disco-2.jpg"
+              alt="Floating DJ deck"
+              fill
+              className="object-cover"
+            />
           </div>
           <div className="relative w-full h-56 md:h-64 rounded-2xl overflow-hidden border border-white/10 sm:col-span-2">
-            <Image src="/images/yacht-greece/greece-disco-3.jpg" alt="Aegean sailing" fill className="object-cover" />
+            <Image
+              src="/images/yacht-greece/greece-disco-3.jpg"
+              alt="Aegean sailing"
+              fill
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
 
-      {/* Fine print */}
-      <section className="mt-10 text-white/70 text-sm leading-relaxed">
+      {/* Fine print + CTA */}
+      <section className="mt-10 text-white/70 text-sm leading-relaxed text-center">
         <p>
-          Notes: Private cabin bookings reduce shared capacity. Port, fuel, and incidentals are budgeted
-          within pricing. Final route and swim stops may vary with weather. Full payment due at booking;
-          flexible installments available via Stripe partners.
+          Notes: Private cabin bookings reduce shared capacity. Port, fuel, and incidentals are
+          budgeted within pricing. Final route and swim stops may vary with weather. Full payment
+          due at booking; flexible installments available via Stripe partners.
+        </p>
+        <p className="text-white/90 mt-8">
+          Ready to join the crew? Limited cabins available —{" "}
+          <Link
+            href="/trips/2026"
+            className="underline hover:text-fuchsia-400 font-semibold"
+          >
+            book your spot now
+          </Link>
+          .
         </p>
       </section>
     </main>

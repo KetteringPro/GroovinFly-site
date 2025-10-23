@@ -5,11 +5,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Ultra Yacht Week – Croatia (July 11–18, 2026) | GroovinFly",
   description:
-    "Yacht Week meets Ultra Europe: 7 days of sailing, sunsets, and world-class EDM across Croatia’s islands. Shared or Private cabins available.",
+    "Yacht Week meets Ultra Europe: 7 days of sailing, sunsets, and world-class EDM across Croatia’s islands. VIP Ultra Europe festival tickets are included.",
   openGraph: {
     title: "Ultra Yacht Week – Croatia 2026 | GroovinFly",
     description:
-      "Sail the Adriatic by day, dance under the stars by night. Ultra Europe VIP + Yacht Week.",
+      "Sail the Adriatic by day, dance under the stars by night. Ultra Europe VIP + Yacht Week included.",
     images: [{ url: "/images/yacht-croatia/croatia-ultra.jpg" }],
   },
 };
@@ -37,15 +37,19 @@ export default function Page() {
       <section className="mt-8 grid gap-6 md:grid-cols-[1.2fr_.8fr]">
         <div>
           <p className="text-white/90">
-            Turn up the volume on summer. GroovinFly’s signature Croatia yacht experience
-            collides with Ultra Europe—sail the Adriatic by day, dance under the stars by night,
-            and wake to another island worth exploring. VIP access, tunnel raft nights, secret bays,
-            and that golden-hour magic.
+            Turn up the volume on summer. GroovinFly’s signature Croatia yacht experience collides
+            with Ultra Europe — and <strong>your VIP festival tickets are included!</strong> Sail
+            the Adriatic by day, dance under the stars by night, and wake to another island worth
+            exploring. VIP access, tunnel raft nights, secret bays, and that golden-hour magic.
+          </p>
+
+          <p className="mt-4 text-fuchsia-400 font-semibold">
+            🎟️ VIP Ultra Europe festival tickets are INCLUDED with your Yacht Week package!
           </p>
 
           {/* Highlights */}
           <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-white/90">
-            <li>✦ Ultra Europe VIP access (2 days)</li>
+            <li>✦ VIP Ultra Europe festival tickets included</li>
             <li>✦ 7 days / 7 nights at sea</li>
             <li>✦ Skipper included</li>
             <li>✦ Three historic islands</li>
@@ -78,19 +82,24 @@ export default function Page() {
           <h2 className="text-lg font-semibold text-purple-200">Trip Facts</h2>
           <dl className="mt-3 space-y-2 text-white/85">
             <div className="flex justify-between gap-4">
-              <dt>Dates</dt><dd>Jul 11–18, 2026</dd>
+              <dt>Dates</dt>
+              <dd>Jul 11–18, 2026</dd>
             </div>
             <div className="flex justify-between gap-4">
-              <dt>Capacity</dt><dd>8 guests</dd>
+              <dt>Capacity</dt>
+              <dd>7 paying guests + host</dd>
             </div>
             <div className="flex justify-between gap-4">
-              <dt>Cabins</dt><dd>4 doubles (shared or private)</dd>
+              <dt>Cabins</dt>
+              <dd>4 doubles (shared or private)</dd>
             </div>
             <div className="flex justify-between gap-4">
-              <dt>Includes</dt><dd>Skipper, VIP Ultra, provisioning & mixers</dd>
+              <dt>Includes</dt>
+              <dd>Skipper, VIP Ultra, provisioning</dd>
             </div>
             <div className="flex justify-between gap-4">
-              <dt>BYOB</dt><dd>Optional — mixers provided</dd>
+              <dt>BYOB</dt>
+              <dd>Optional — mixers provided</dd>
             </div>
           </dl>
         </aside>
@@ -100,23 +109,48 @@ export default function Page() {
       <section className="mt-10">
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="relative w-full h-56 md:h-64 rounded-2xl overflow-hidden border border-white/10">
-            <Image src="/images/yacht-croatia/croatia-ultra-1.jpg" alt="Raft party Croatia" fill className="object-cover" />
+            <Image
+              src="/images/yacht-croatia/croatia-ultra-1.jpg"
+              alt="Raft party Croatia"
+              fill
+              className="object-cover"
+            />
           </div>
           <div className="relative w-full h-56 md:h-64 rounded-2xl overflow-hidden border border-white/10">
-            <Image src="/images/yacht-croatia/croatia-ultra-2.jpg" alt="Ultra Europe night energy" fill className="object-cover" />
+            <Image
+              src="/images/yacht-croatia/croatia-ultra-2.jpg"
+              alt="Ultra Europe night energy"
+              fill
+              className="object-cover"
+            />
           </div>
           <div className="relative w-full h-56 md:h-64 rounded-2xl overflow-hidden border border-white/10 sm:col-span-2">
-            <Image src="/images/yacht-croatia/croatia-ultra-3.jpg" alt="Adriatic islands & bays" fill className="object-cover" />
+            <Image
+              src="/images/yacht-croatia/croatia-ultra-3.jpg"
+              alt="Adriatic islands & bays"
+              fill
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
 
-      {/* Fine print */}
-      <section className="mt-10 text-white/70 text-sm leading-relaxed">
+      {/* Fine print + CTA */}
+      <section className="mt-10 text-white/70 text-sm leading-relaxed text-center">
         <p>
-          Notes: Private cabin bookings reduce shared capacity. Port, fuel, and incidentals are budgeted
-          within pricing. Final route and swim stops may vary with weather. Full payment due at booking;
-          flexible installments available via Stripe partners.
+          Notes: Private cabin bookings reduce shared capacity. Port, fuel, and incidentals are
+          budgeted within pricing. Final route and swim stops may vary with weather. Full payment
+          due at booking; flexible installments available via Stripe partners.
+        </p>
+        <p className="text-white/90 mt-8">
+          Ready to join the crew? Limited cabins available —{" "}
+          <Link
+            href="/trips/2026"
+            className="underline hover:text-fuchsia-400 font-semibold"
+          >
+            book your spot now
+          </Link>
+          .
         </p>
       </section>
     </main>

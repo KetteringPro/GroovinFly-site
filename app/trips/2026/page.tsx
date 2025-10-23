@@ -40,7 +40,7 @@ const trips2026: Trip[] = [
     title: "Croatia\n🌅 Ultra Yacht Week",
     dates: "July 11–18, 2026",
     blurb:
-      "Ultra Europe meets Yacht Week — EDM, island hopping, and unforgettable summer nights in the Adriatic.",
+      "Ultra Europe meets Yacht Week — EDM, island hopping, and unforgettable summer nights in the Adriatic. Festival tickets are included!",
     image: {
       src: "/images/yacht-croatia/croatia-ultra.jpg",
       alt: "Ultra Yacht Week Croatia – sunset on the Adriatic",
@@ -51,7 +51,7 @@ const trips2026: Trip[] = [
     title: "Greece\n🎶 Disco Yacht Week",
     dates: "August 8–15, 2026",
     blurb:
-      "Sail through the Greek Islands with a disco-house soundtrack and sunset dance decks — pure festival freedom.",
+      "Sail through the Greek Islands with a disco-house soundtrack and sunset dance decks — pure festival freedom. Includes festival tickets!",
     image: {
       src: "/images/yacht-greece/greece-disco.jpg",
       alt: "Disco Yacht Week Greece – music and sunshine",
@@ -115,17 +115,13 @@ export default function Trips2026ComingSoon() {
                 <p className="text-white/90 mt-2 flex-1">{t.blurb}</p>
 
                 <div className="mt-4">
-                  {t.href ? (
+                  {t.href && (
                     <Link
                       href={t.href}
                       className="inline-block px-4 py-2 rounded-lg bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold"
                     >
                       View Details & Book
                     </Link>
-                  ) : (
-                    <span className="inline-block px-4 py-2 rounded-lg bg-white/8 border border-white/12 text-white/70 font-semibold">
-                      Coming Soon
-                    </span>
                   )}
                 </div>
               </div>
@@ -146,17 +142,13 @@ export default function Trips2026ComingSoon() {
                 <p className="text-white/90 mt-2 flex-1">{t.blurb}</p>
 
                 <div className="mt-4">
-                  {t.href ? (
+                  {t.href && (
                     <Link
                       href={t.href}
                       className="inline-block px-4 py-2 rounded-lg bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold"
                     >
                       View Details & Book
                     </Link>
-                  ) : (
-                    <span className="inline-block px-4 py-2 rounded-lg bg-white/8 border border-white/12 text-white/70 font-semibold">
-                      Coming Soon
-                    </span>
                   )}
                 </div>
               </div>
@@ -177,17 +169,13 @@ export default function Trips2026ComingSoon() {
                 <p className="text-white/90 mt-2 flex-1">{t.blurb}</p>
 
                 <div className="mt-4">
-                  {t.href ? (
+                  {t.href && (
                     <Link
                       href={t.href}
                       className="inline-block px-4 py-2 rounded-lg bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold"
                     >
                       View Details & Book
                     </Link>
-                  ) : (
-                    <span className="inline-block px-4 py-2 rounded-lg bg-white/8 border border-white/12 text-white/70 font-semibold">
-                      Coming Soon
-                    </span>
                   )}
                 </div>
               </div>
