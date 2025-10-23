@@ -35,6 +35,29 @@ const trips2026: Trip[] = [
     image: { src: "/images/coachella-weekend-2/cover.jpg", alt: "Coachella main stage crowd" },
   },
   
+  {
+    href: "/trips/2026/croatia-ultra",
+    title: "Croatia\n🌅 Ultra Yacht Week",
+    dates: "July 11–18, 2026",
+    blurb:
+      "Ultra Europe meets Yacht Week — EDM, island hopping, and unforgettable summer nights in the Adriatic.",
+    image: {
+      src: "/images/yacht-croatia/croatia-ultra.jpg",
+      alt: "Ultra Yacht Week Croatia – sunset on the Adriatic",
+    },
+  },
+  {
+    href: "/trips/2026/greece-disco",
+    title: "Greece\n🎶 Disco Yacht Week",
+    dates: "August 8–15, 2026",
+    blurb:
+      "Sail through the Greek Islands with a disco-house soundtrack and sunset dance decks — pure festival freedom.",
+    image: {
+      src: "/images/yacht-greece/greece-disco.jpg",
+      alt: "Disco Yacht Week Greece – music and sunshine",
+    },
+  },
+
   {     
     href: "/trips/2026/edc-vegas",
     title: "Las Vegas\n🎡 EDC",
@@ -59,6 +82,10 @@ const trips2026: Trip[] = [
 ];
 
 export default function Trips2026ComingSoon() {
+  const firstRowTrips = trips2026.slice(0, 3);
+  const yachtWeekTrips = trips2026.slice(3, 5);
+  const remainingTrips = trips2026.slice(5);
+
   return (
     <>
       <main className="max-w-5xl mx-auto px-5 py-10">
@@ -75,9 +102,71 @@ export default function Trips2026ComingSoon() {
           </div>
         </div>
        
+        {/* First Row: 3 Cards */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-6">
+          {firstRowTrips.map((t, i) => (
+            <article key={i} className="rounded-2xl overflow-hidden flex flex-col bg-white/5 border border-white/10">
+              <div className="relative w-full h-48">
+                <Image src={t.image.src} alt={t.image.alt} fill className="object-cover" priority />
+              </div>
+              <div className="p-5 flex-1 flex flex-col">
+                <h2 className="text-lg font-semibold text-purple-200 whitespace-pre-line">{t.title}</h2>
+                <div className="text-sm text-white/70">{t.dates}</div>
+                <p className="text-white/90 mt-2 flex-1">{t.blurb}</p>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {trips2026.map((t, i) => (
+                <div className="mt-4">
+                  {t.href ? (
+                    <Link
+                      href={t.href}
+                      className="inline-block px-4 py-2 rounded-lg bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold"
+                    >
+                      View Details & Book
+                    </Link>
+                  ) : (
+                    <span className="inline-block px-4 py-2 rounded-lg bg-white/8 border border-white/12 text-white/70 font-semibold">
+                      Coming Soon
+                    </span>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Second Row: 2 Yacht Week Cards (Larger/Featured) */}
+        <div className="grid gap-6 md:grid-cols-2 mt-6">
+          {yachtWeekTrips.map((t, i) => (
+            <article key={i} className="rounded-2xl overflow-hidden flex flex-col bg-white/5 border-2 border-purple-400/30">
+              <div className="relative w-full h-64 md:h-72">
+                <Image src={t.image.src} alt={t.image.alt} fill className="object-cover" priority />
+              </div>
+              <div className="p-5 flex-1 flex flex-col">
+                <h2 className="text-lg font-semibold text-purple-200 whitespace-pre-line">{t.title}</h2>
+                <div className="text-sm text-white/70">{t.dates}</div>
+                <p className="text-white/90 mt-2 flex-1">{t.blurb}</p>
+
+                <div className="mt-4">
+                  {t.href ? (
+                    <Link
+                      href={t.href}
+                      className="inline-block px-4 py-2 rounded-lg bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold"
+                    >
+                      View Details & Book
+                    </Link>
+                  ) : (
+                    <span className="inline-block px-4 py-2 rounded-lg bg-white/8 border border-white/12 text-white/70 font-semibold">
+                      Coming Soon
+                    </span>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Third Row: 3 Cards */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-6">
+          {remainingTrips.map((t, i) => (
             <article key={i} className="rounded-2xl overflow-hidden flex flex-col bg-white/5 border border-white/10">
               <div className="relative w-full h-48">
                 <Image src={t.image.src} alt={t.image.alt} fill className="object-cover" priority />
