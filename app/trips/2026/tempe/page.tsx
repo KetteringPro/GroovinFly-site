@@ -95,7 +95,7 @@ export default function Tempe2026Page() {
           href={LINK_TEMPE_SHARED_BEDROOM_SHARED}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white/5 hover:bg-white/10 text-white font-semibold px-5 py-3 rounded-lg border border-white/10"
+          className="bg-purple-700 hover:bg-purple-800 text-white font-semibold px-5 py-3 rounded-lg"
         >
           Reserve – Shared Bedroom (Shared)
         </a>
@@ -104,7 +104,7 @@ export default function Tempe2026Page() {
           href={LINK_TEMPE_SHARED_BEDROOM_SOLO}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white/5 hover:bg-white/10 text-white font-semibold px-5 py-3 rounded-lg border border-white/10"
+          className="bg-purple-700 hover:bg-purple-800 text-white font-semibold px-5 py-3 rounded-lg"
         >
           Reserve – Shared Bedroom (Solo)
         </a>
@@ -122,7 +122,7 @@ export default function Tempe2026Page() {
           href={LINK_TEMPE_PULLOUT_SOLO}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white/5 hover:bg-white/10 text-white font-semibold px-5 py-3 rounded-lg border border-white/10"
+          className="bg-purple-700 hover:bg-purple-800 text-white font-semibold px-5 py-3 rounded-lg"
         >
           Reserve – Pull-Out (Solo)
         </a>

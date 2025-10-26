@@ -61,7 +61,7 @@ export default function Page() {
           <div className="mt-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-center">
               <Link
-                href="https://buy.stripe.com/bJe3co0ePd6L8SJdw32Nq0v"
+                href="https://buy.stripe.com/dRm9AMbXxc2H1qhgIf2Nq0C"
                 className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg flex flex-col items-center justify-center"
               >
                 <span>Book Shared Cabin</span>
@@ -70,7 +70,7 @@ export default function Page() {
                 </span>
               </Link>
               <Link
-                href="https://buy.stripe.com/fZu4gs5z9c2Hed3dw32Nq0t"
+                href="https://buy.stripe.com/4gM3cobXx9Uzglb2Rp2Nq0B"
                 className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg flex flex-col items-center justify-center"
               >
                 <span>Book Saloon Berth</span>
@@ -79,7 +79,7 @@ export default function Page() {
                 </span>
               </Link>
               <Link
-                href="https://buy.stripe.com/cNidR2bXx1o3b0RajR2Nq0u"
+                href="https://buy.stripe.com/14AeV67Hh3wbd8Z2Rp2Nq0A"
                 className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg flex flex-col items-center justify-center"
               >
                 <span>Book Private Cabin</span>

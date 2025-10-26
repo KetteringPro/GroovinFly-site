@@ -61,7 +61,7 @@ export default function Page() {
           <div className="mt-6 space-y-3">
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
-                href="https://buy.stripe.com/cNi9AM1iT5Ej1qh4Zx2Nq0x"
+                href="https://buy.stripe.com/4gMeV6bXxc2H5Gx77F2Nq0D"
                 className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg flex-1"
               >
                 <div className="flex flex-col items-center justify-center">
@@ -72,7 +72,7 @@ export default function Page() {
                 </div>
               </Link>
               <Link
-                href="https://buy.stripe.com/eVq7sEe5F5Ejglbdw32Nq0w"
+                href="https://buy.stripe.com/7sY6oAd1BaYD3yp9fN2Nq0E"
                 className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg flex-1"
               >
                 <div className="flex flex-col items-center justify-center">
