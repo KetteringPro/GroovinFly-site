@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ComingSoon from "@/components/ComingSoon";
+import Link from "next/link";
 
 export default function Miami2026Page() {
   return (
@@ -73,7 +73,35 @@ export default function Miami2026Page() {
       </section>
 
       {/* Pricing & Booking */}
-      <ComingSoon tripSlug="miami-2026" />
+      <section className="text-center mt-6 space-y-3">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Link
+            href="https://buy.stripe.com/4gM7sE7Hh8QvglbajR2Nq0y"
+            className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg flex-1"
+          >
+            <div className="flex flex-col items-center justify-center">
+              <span>Book Shared Bed / Shared Room</span>
+              <span>
+                <s>$2,599</s> <strong>$2,299</strong> (Early Groover!)
+              </span>
+            </div>
+          </Link>
+          <Link
+            href="https://buy.stripe.com/3cI14gaTt2s76KB63B2Nq0z"
+            className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg flex-1"
+          >
+            <div className="flex flex-col items-center justify-center">
+              <span>Book Solo Bed / Shared Room</span>
+              <span>
+                <s>$2,899</s> <strong>$2,599</strong> (Early Groover!)
+              </span>
+            </div>
+          </Link>
+        </div>
+        <p className="text-sm text-white/60 mt-2">
+          Installments via Klarna / Affirm / Afterpay available.
+        </p>
+      </section>
 
       {/* Add-ons */}
       <section className="bg-white/5 border border-white/10 rounded-2xl p-7 shadow-md">
