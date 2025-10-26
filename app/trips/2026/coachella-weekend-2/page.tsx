@@ -42,7 +42,7 @@ export default function Coachella2026Page() {
             <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
               <h1 className="text-3xl md:text-5xl font-extrabold drop-shadow-md">Coachella 2026 · Weekend 2</h1>
               <p className="text-lg md:text-xl opacity-90">
-                April 17–20, 2026 · Indio, CA · Groovin’ Fly Premium & Budget Packages
+                April 16–20, 2026 · Indio, CA · Groovin’ Fly Premium & Budget Packages
               </p>
             </div>
           </div>
@@ -144,6 +144,13 @@ export default function Coachella2026Page() {
             </ul>
           </div>
         </section>
+              {/* Double Header CTA */}
+      <section className="bg-purple-700/20 border border-purple-500/30 rounded-2xl p-6 text-center">
+        <h3 className="text-xl font-semibold text-purple-200">Double Header: Coachella + Stagecoach</h3>
+        <p className="text-white/90 mt-1">
+          Extend your trip and stay for both festivals! Combine Coachella &amp; Stagecoach for the ultimate two-week desert adventure — hotel transfer included.
+        </p>
+      </section>
       </main>
       <Footer />
     </>
