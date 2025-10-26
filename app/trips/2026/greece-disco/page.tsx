@@ -59,28 +59,40 @@ export default function Page() {
 
           {/* Booking buttons */}
           <div className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-center">
               <Link
                 href="https://buy.stripe.com/bJe3co0ePd6L8SJdw32Nq0v"
-                className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg text-center"
+                className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg flex flex-col items-center justify-center"
               >
-                Book Shared Cabin — $2,495
+                <span>Book Shared Cabin</span>
+                <span>
+                  <s>$2,495</s> <strong>$2,195</strong> (Early Groover!)
+                </span>
               </Link>
               <Link
                 href="https://buy.stripe.com/fZu4gs5z9c2Hed3dw32Nq0t"
-                className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg text-center"
+                className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg flex flex-col items-center justify-center"
               >
-                Book Saloon Berth — $2,295
+                <span>Book Saloon Berth</span>
+                <span>
+                  <s>$2,295</s> <strong>$1,995</strong> (Early Groover!)
+                </span>
               </Link>
               <Link
                 href="https://buy.stripe.com/cNidR2bXx1o3b0RajR2Nq0u"
-                className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg text-center"
+                className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg flex flex-col items-center justify-center"
               >
-                Book Private Cabin — $3,495
+                <span>Book Private Cabin</span>
+                <span>
+                  <s>$3,495</s> <strong>$3,195</strong> (Early Groover!)
+                </span>
               </Link>
             </div>
             <p className="text-sm text-white/60 mt-3">
-              Full payment required. Installments via Klarna / Affirm available.
+              Early Groover Price — Save $300 when you book early! No coupon needed.
+            </p>
+            <p className="text-sm text-white/60 mt-1 italic">
+              *Early Groover Price automatically applied — no coupon needed.*
             </p>
           </div>
         </div>

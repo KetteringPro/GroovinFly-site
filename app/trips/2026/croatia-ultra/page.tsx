@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Ultra Yacht Week – Croatia (July 11–18, 2026) | GroovinFly",
   description:
-    "Yacht Week meets Ultra Europe: 7 days of sailing, sunsets, and world-class EDM across Croatia’s islands. VIP Ultra Europe festival tickets are included.",
+    "Yacht Week meets Ultra Europe: 7 days of sailing, sunsets, and world-class EDM across Croatia's islands. VIP Ultra Europe festival tickets are included.",
   openGraph: {
     title: "Ultra Yacht Week – Croatia 2026 | GroovinFly",
     description:
@@ -37,7 +37,7 @@ export default function Page() {
       <section className="mt-8 grid gap-6 md:grid-cols-[1.2fr_.8fr]">
         <div>
           <p className="text-white/90">
-            Turn up the volume on summer. GroovinFly’s signature Croatia yacht experience collides
+            Turn up the volume on summer. GroovinFly's signature Croatia yacht experience collides
             with Ultra Europe — and <strong>your VIP festival tickets are included!</strong> Sail
             the Adriatic by day, dance under the stars by night, and wake to another island worth
             exploring. VIP access, tunnel raft nights, secret bays, and that golden-hour magic.
@@ -58,22 +58,42 @@ export default function Page() {
           </ul>
 
           {/* Booking buttons */}
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="https://buy.stripe.com/cNi9AM1iT5Ej1qh4Zx2Nq0x"
-              className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg"
-            >
-              Book Shared Cabin — $2,495
-            </Link>
-            <Link
-              href="https://buy.stripe.com/eVq7sEe5F5Ejglbdw32Nq0w"
-              className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg"
-            >
-              Book Private Cabin — $3,395
-            </Link>
-            <span className="text-sm text-white/60 self-center">
-              Full payment required. Installments via Klarna / Affirm available.
-            </span>
+          <div className="mt-6 space-y-3">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href="https://buy.stripe.com/cNi9AM1iT5Ej1qh4Zx2Nq0x"
+                className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg flex-1"
+              >
+                <div className="flex flex-col items-center justify-center">
+                  <span>Book Shared Cabin</span>
+                  <span>
+                    <s>$2,495</s> <strong>$2,195</strong> <br></br> (Early Groover!)
+                  </span>
+                </div>
+              </Link>
+              <Link
+                href="https://buy.stripe.com/eVq7sEe5F5Ejglbdw32Nq0w"
+                className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg flex-1"
+              >
+                <div className="flex flex-col items-center justify-center">
+                  <span>Book Private Cabin</span>
+                  <span>
+                    <s>$3,395</s> <strong>$3,095</strong> <br></br> (Early Groover!)
+                  </span>
+                </div>
+              </Link>
+            </div>
+            <div className="flex flex-col items-center justify-center">
+              <span className="text-sm text-white/60 text-center">
+                Early Groover Price — Save $300 when you book early! No coupon needed.
+              </span>
+              <em className="text-xs text-white/50 mt-1 text-center">
+                *Early Groover Price automatically applied — no coupon needed.*
+              </em>
+              <p className="text-sm text-white/60 mt-1 text-center">
+                Full payment required. Installments via Klarna / Affirm available.
+              </p>
+            </div>
           </div>
         </div>
 
