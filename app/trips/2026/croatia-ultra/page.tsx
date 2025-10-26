@@ -72,7 +72,7 @@ export default function Page() {
                 </div>
               </Link>
               <Link
-                href="https://buy.stripe.com/7sY6oAd1BaYD3yp9fN2Nq0E"
+                href="https://buy.stripe.com/9B600c1iT8Qv7OF77F2Nq0F"
                 className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold px-4 py-2 rounded-lg flex-1"
               >
                 <div className="flex flex-col items-center justify-center">
