@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import TravelTips from "@/app/components/TravelTips";
+import TravelTips from "@/components/TravelTips";
 
 export const metadata: Metadata = {
   title: "Ultra Yacht Week – Croatia (July 11–18, 2026) | GroovinFly",
