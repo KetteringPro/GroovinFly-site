@@ -107,7 +107,7 @@ export default function Page() {
             </div>
             <div className="flex justify-between gap-4">
               <dt>Capacity</dt>
-              <dd>9 paying guests + host</dd>
+              <dd>10 guests including host</dd>
             </div>
             <div className="flex justify-between gap-4">
               <dt>Cabins</dt>
@@ -155,22 +155,37 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Fine print + CTA */}
+      {/* Travel Tips */}
+      <section className="mt-10 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
+        <h2 className="text-lg font-semibold text-purple-200 mb-3">Travel Tips</h2>
+        <ul className="list-disc pl-5 space-y-2 text-white/90 text-sm text-left">
+          <li>
+            <strong>Arrival:</strong> Fly into Athens International Airport (ATH). Arrive Friday, Aug 15 or early Saturday, Aug 16. Boarding opens Saturday afternoon at Alimos Marina.
+          </li>
+          <li>
+            <strong>Suggested Flight:</strong> Boston (BOS) → Athens (ATH) on ITA Airways.  
+            Depart Wednesday, August 13 (evening) → Arrive Thursday, August 14 (afternoon).  
+            Estimated round-trip cost: <strong>$1,000–$1,300 USD.</strong>  
+            *Gives a day buffer before boarding and smooth post-trip travel home.*
+          </li>
+          <li>
+            <strong>Departure:</strong> We return to Alimos Marina on Saturday, Aug 23. Plan to disembark by 9–10 AM.
+          </li>
+          <li>
+            <strong>Packing:</strong> Swimsuits, theme night outfits, sunscreen, passport, and some euros for local expenses.
+          </li>
+          <li>
+            <strong>Pro tip:</strong> Consider staying an extra night in Athens after the trip to unwind and explore the city!
+          </li>
+        </ul>
+      </section>
+
+      {/* Fine print */}
       <section className="mt-10 text-white/70 text-sm leading-relaxed text-center">
         <p>
           Notes: Private cabin bookings reduce shared capacity. Port, fuel, and incidentals are
           budgeted within pricing. Final route and swim stops may vary with weather. Full payment
           due at booking; flexible installments available via Stripe partners.
-        </p>
-        <p className="text-white/90 mt-8">
-          Ready to join the crew? Limited cabins available —{" "}
-          <Link
-            href="/trips/2026"
-            className="underline hover:text-fuchsia-400 font-semibold"
-          >
-            book your spot now
-          </Link>
-          .
         </p>
       </section>
     </main>
