@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import TravelTips from "@/app/components/TravelTips";
 
 export const metadata: Metadata = {
   title: "Ultra Yacht Week – Croatia (July 11–18, 2026) | GroovinFly",
@@ -107,7 +108,7 @@ export default function Page() {
             </div>
             <div className="flex justify-between gap-4">
               <dt>Capacity</dt>
-              <dd>7 paying guests + host</dd>
+              <dd>8 guests </dd>
             </div>
             <div className="flex justify-between gap-4">
               <dt>Cabins</dt>
@@ -154,6 +155,37 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      {/* Travel Tips */}
+      <TravelTips
+        arrival={{
+          airport: "Split Airport (SPU)",
+          arrivalDate: "Friday, July 10 or early Saturday, July 11, 2026",
+          details: [
+            "Arrive in Split before noon Saturday for boarding at Marina Kaštela.",
+            "Many travelers connect through London, Frankfurt, or Zagreb.",
+            "Taxis and private transfers available (~25 min to marina)."
+          ],
+        }}
+        departure={{
+          marina: "Marina Kaštela, Split",
+          departureDate: "Saturday, July 18, 2026",
+          details: [
+            "Yachts return to the marina Friday night, July 17.",
+            "Disembark by 9–10 AM Saturday morning.",
+            "Book return flights Saturday afternoon or Sunday morning from Split (SPU)."
+          ],
+        }}
+        packing={[
+          "Lightweight clothing and swimsuits",
+          "Deck-safe shoes (no black soles)",
+          "Sunscreen, hat, and reusable water bottle",
+          "Passport valid for 6+ months",
+          "EU power adapter (Type C or F plug)"
+        ]}
+        currency="Euro (€)"
+        proTip="Extend your stay one extra night in Split for shopping, sunset cocktails, and a relaxed departure!"
+      />
 
       {/* Fine print + CTA */}
       <section className="mt-10 text-white/70 text-sm leading-relaxed text-center">
