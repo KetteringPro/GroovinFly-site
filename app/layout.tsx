@@ -1,9 +1,8 @@
-// components/NavBar.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import { CartBadge } from "@/components/CartBadge";
-
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://groovinfly.com"),
@@ -41,11 +40,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-3PSHQHLERD"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-3PSHQHLERD');
+          `}
+        </Script>
+      </head>
       <body className="min-h-screen bg-[#160e1d] text-white">
-       <div className="fixed top-3 right-3 z-50 flex gap-2 items-center">
-                 {/* <UserPortalButton />  Hidden until customer portal is live */}
-         <CartBadge />
-       
+        <div className="fixed top-3 right-3 z-50 flex gap-2 items-center">
+          {/* <UserPortalButton />  Hidden until customer portal is live */}
+          <CartBadge />
         </div>
 
         {/* Global NavBar */}

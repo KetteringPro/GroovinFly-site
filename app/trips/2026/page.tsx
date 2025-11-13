@@ -13,7 +13,7 @@ type Trip = {
 const trips2026: Trip[] = [
   {
     href: "/trips/2026/panama",
-    title: "Bocas del Toro, Panama\n🏝 Groove Island Getaway",
+    title: "Bocas del Toro, Panama\n🎵 Groove Island Getaway",
     dates: "Jan 8–18, 2026",
     blurb: "Explore the islands of Bocas del Toro on this laid-back, exploratory adventure. Includes water taxis, lodging, and Freaky Friday tickets.",
     image: { src: "/images/panama/cover.jpg", alt: "Overwater cabins in Bocas del Toro, Panama" },
@@ -32,21 +32,7 @@ const trips2026: Trip[] = [
     blurb: "World-class EDM on the bay. High energy, warm nights, zero judgment.",
     image: { src: "/images/miami/cover.jpg", alt: "Miami skyline at dusk" },
   },
-  {
-    href: "/trips/2026/croatia-ultra",
-    title: "Croatia\n🌅 Ultra Yacht Week",
-    dates: "July 11–18, 2026",
-    blurb: "Ultra Europe meets Yacht Week — EDM, island hopping, and unforgettable summer nights in the Adriatic. Festival tickets included!",
-    image: { src: "/images/yacht-croatia/cover.jpg", alt: "Ultra Yacht Week Croatia – sunset on the Adriatic" },
-  },
-  {
-    href: "/trips/2026/greece-disco",
-    title: "Greece\n🎶 Disco Yacht Week",
-    dates: "August 8–15, 2026",
-    blurb: "Sail through the Greek Islands with a disco-house soundtrack and sunset dance decks — pure festival freedom. Includes festival tickets!",
-    image: { src: "/images/yacht-greece/cover.jpg", alt: "Disco Yacht Week Greece – music and sunshine" },
-  },
-  {
+    {
     href: "/trips/2026/coachella-weekend-2",
     title: "Indio, CA\n🌴 Coachella 2026",
     dates: "Apr 16–20, 2026",
@@ -57,17 +43,31 @@ const trips2026: Trip[] = [
     href: "/trips/2026/coach-stage",
     title: "Indio, CA\n🎡 Coachella + Stagecoach",
     dates: "Apr 16–27, 2026",
-    blurb: "Two weekends, two festivals — one unforgettable desert getaway. Includes both Coachella and Stagecoach tickets, lodging, and hotel transfer.",
+    blurb: "Two weekends, two festivals – one unforgettable desert getaway. Includes both Coachella and Stagecoach tickets, lodging, and hotel transfer.",
     image: { src: "/images/coach-stage/cover.jpg", alt: "Double Header Coachella + Stagecoach – colorful desert drapes" },
   },
   {
     href: "/trips/2026/stagecoach",
     title: "Indio, CA\n🤠 Stagecoach 2026",
     dates: "Apr 23–27, 2026",
-    blurb: "Country under the desert sky — Stagecoach 2026 with Post Malone, Lainey Wilson & Cody Johnson. Festival tickets, lodging, and shuttle included.",
+    blurb: "Country under the desert sky – Stagecoach 2026 with Post Malone, Lainey Wilson & Cody Johnson. Festival tickets, lodging, and shuttle included.",
     image: { src: "/images/stagecoach/cover.jpg", alt: "Stagecoach Festival 2026 – country music under desert lights" },
   },
   {
+    href: "/trips/2026/croatia-ultra",
+    title: "Croatia\n🌅 Ultra Yacht Week",
+    dates: "July 11–18, 2026",
+    blurb: "Ultra Europe meets Yacht Week – EDM, island hopping, and unforgettable summer nights in the Adriatic. Festival tickets included!",
+    image: { src: "/images/yacht-croatia/cover.jpg", alt: "Ultra Yacht Week Croatia – sunset on the Adriatic" },
+  },
+  {
+    href: "/trips/2026/greece-disco",
+    title: "Greece\n🎶 Disco Yacht Week",
+    dates: "August 8–15, 2026",
+    blurb: "Sail through the Greek Islands with a disco-house soundtrack and sunset dance decks – pure festival freedom. Includes festival tickets!",
+    image: { src: "/images/yacht-greece/cover.jpg", alt: "Disco Yacht Week Greece – music and sunshine" },
+  },
+    {
     href: "/trips/2026/edc-vegas",
     title: "Las Vegas\n🎡 EDC",
     dates: "May 14–18, 2026",
@@ -85,16 +85,16 @@ const trips2026: Trip[] = [
     href: "/trips/2026/st-thomas",
     title: "St. Thomas\n🌴 Island Escape",
     dates: "May 29 – Jun 1, 2026",
-    blurb: "Turquoise water, sunset cruise, and breezy island nights — Caribbean ease.",
+    blurb: "Turquoise water, sunset cruise, and breezy island nights – Caribbean ease.",
     image: { src: "/images/st-thomas/cover.jpg", alt: "St. Thomas beach and sailboats" },
   },
 ];
 
 export default function Trips2026ComingSoon() {
-  const firstRowTrips = trips2026.slice(0, 3);
-  const yachtWeekTrips = trips2026.slice(3, 5);
-  const coachellaRowTrips = trips2026.slice(5, 8);
-  const remainingTrips = trips2026.slice(8);
+  const firstRowTrips = trips2026.slice(0, 3);      // Panama, Tempe, Miami
+  const coachellaRowTrips = trips2026.slice(3, 6);  // Coachella, Coach-Stage, Stagecoach
+  const yachtWeekTrips = trips2026.slice(6, 8);     // Croatia, Greece (the actual yacht weeks)
+  const remainingTrips = trips2026.slice(8);        // EDC, Gulf Jam, St. Thomas
 
   return (
     <>
@@ -108,7 +108,7 @@ export default function Trips2026ComingSoon() {
           />
           <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-center px-4 rounded-3xl">
             <h1 className="text-4xl font-bold text-purple-300 drop-shadow-md">2026 Trips</h1>
-            <p className="mt-2 text-white/90 max-w-md drop-shadow-md">2026 is shaping up fast — join the adventures already locked in, and stay tuned for the rest!</p>
+            <p className="mt-2 text-white/90 max-w-md drop-shadow-md">2026 is shaping up fast – join the adventures already locked in, and stay tuned for the rest!</p>
           </div>
         </div>
        

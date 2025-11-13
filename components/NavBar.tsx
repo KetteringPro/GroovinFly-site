@@ -18,7 +18,7 @@ export default function NavBar() {
             />
           </Link>
 
-          {/* Center: primary links (Home, 2025, 2026, Merch) */}
+          {/* Center: primary links (Home, 2025, 2026, Blog, Guide, Merch) */}
           <div className="ml-2 flex items-center gap-2 flex-wrap">
             <Link href="/" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0">
               Home
@@ -28,6 +28,12 @@ export default function NavBar() {
             </Link>
             <Link href="/trips/2026" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0">
               2026
+            </Link>
+            <Link href="/blog" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0">
+              Blog
+            </Link>
+            <Link href="/groovin-guide" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0 flex items-center gap-1">
+              Guide <span className="text-xs">✨</span>
             </Link>
             <Link
               href="/merch"

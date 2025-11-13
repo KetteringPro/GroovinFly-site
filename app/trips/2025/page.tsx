@@ -32,7 +32,7 @@ const trips: Trip[] = [
     href: "/trips/2025/nyc",
     title: "New York City\n🎄 Holidays in the City",
     dates: "Dec 12–14, 2025",
-    blurb: "Times Square stay, welcome dinner, Rockefeller Tree, Rockettes (premium).",
+    blurb: "Times Square stay, welcome dinner, Rockefeller Tree, Rockettes!",
     image: { src: "/images/nyc/cover.jpg", alt: "NYC holiday lights" },
   },
 ];
