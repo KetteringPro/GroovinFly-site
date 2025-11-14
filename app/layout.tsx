@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/og/Groovin-Fly.jpg",
+        url: "https://www.groovinfly.com/images/og/Groovin-Fly.jpg",
         width: 1200,
         height: 630,
         alt: "GroovinFly women dancing under festival lights",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "GroovinFly — Age gracefully. Party joyfully.",
     description:
       "Festival & yacht adventures designed for women who love to travel, dance, and live free.",
-    images: ["/images/og/Groovin-Fly.jpg"],
+    images: ["https://www.groovinfly.com/images/og/Groovin-Fly.jpg"],
   },
 };
 
