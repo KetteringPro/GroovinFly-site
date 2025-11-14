@@ -5,7 +5,7 @@ import { CartBadge } from "@/components/CartBadge";
 import Script from 'next/script'
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://groovinfly.com"),
+  metadataBase: new URL("https://www.groovinfly.com"),
   title: "GroovinFly — Age gracefully. Party joyfully.",
   description: "High-energy, small-group trips for fearless women.",
   openGraph: {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://groovinfly.com/images/og/Groovin-Fly.jpg",
+        url: "/images/og/Groovin-Fly.jpg",
         width: 1200,
         height: 630,
         alt: "GroovinFly women dancing under festival lights",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "GroovinFly — Age gracefully. Party joyfully.",
     description:
       "Festival & yacht adventures designed for women who love to travel, dance, and live free.",
-    images: ["https://groovinfly.com/images/og/Groovin-Fly.jpg"],
+    images: ["/images/og/Groovin-Fly.jpg"],
   },
 };
 
