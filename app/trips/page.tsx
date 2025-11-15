@@ -8,6 +8,7 @@ import Link from "next/link";
   dates: string;
   blurb: string;
   image: { src: string; alt: string };
+  soldOut?: boolean;
 };
 
 const trips: Trip[] = [
@@ -24,6 +25,7 @@ const trips: Trip[] = [
     dates: "Weekend getaway",
     blurb: "Magic Mike Live, Old Port afterparty, Hampton boardwalk, Sun brunch.",
     image: { src: "/images/portland-hampton/cover.jpg", alt: "Hampton boardwalk at sunset" },
+    soldOut: true,
   },
   {
     href: "/trips/2025/nyc",
@@ -72,12 +74,21 @@ export default function TripsListPage() {
               <div className="text-sm text-white/70">{t.dates}</div>
               <p className="text-white/90 mt-2 flex-1">{t.blurb}</p>
               <div className="mt-4">
-                <Link
-                  href={t.href}
-                  className="inline-block bg-purple-700 hover:bg-purple-800 text-white font-semibold px-4 py-2 rounded-lg"
-                >
-                  View Details & Book
-                </Link>
+                {t.soldOut ? (
+                  <>
+                    <button disabled className="bg-gray-500 text-white font-semibold px-4 py-2 rounded-lg cursor-not-allowed">
+                      SOLD OUT
+                    </button>
+                    <p className="text-sm text-gray-400 mt-2">Thank you to everyone who joined — this trip is now sold out!</p>
+                  </>
+                ) : (
+                  <Link
+                    href={t.href}
+                    className="inline-block bg-purple-700 hover:bg-purple-800 text-white font-semibold px-4 py-2 rounded-lg"
+                  >
+                    View Details & Book
+                  </Link>
+                )}
               </div>
             </div>
           </article>
