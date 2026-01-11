@@ -18,16 +18,16 @@ export default function NavBar() {
             />
           </Link>
 
-          {/* Center: primary links (Home, 2025, 2026, Blog, Guide, Merch) */}
+          {/* Center: primary links (Home, 2026, Past, Blog, Guide, Merch) */}
           <div className="ml-2 flex items-center gap-2 flex-wrap">
             <Link href="/" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0">
               Home
             </Link>
-            <Link href="/trips/2025" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0">
-              2025
-            </Link>
             <Link href="/trips/2026" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0">
-              2026
+              2026 Trips
+            </Link>
+            <Link href="/trips/2025" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white/60 whitespace-nowrap shrink-0 text-sm">
+              Past
             </Link>
             <Link href="/blog" className="px-3 py-1.5 rounded-lg hover:bg-white/10 text-white whitespace-nowrap shrink-0">
               Blog

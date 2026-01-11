@@ -8,6 +8,7 @@ type Trip = {
   dates: string;
   blurb: string;
   image: { src: string; alt: string };
+  status?: "soldOut" | "closed"; // trip status
 };
 
 const trips2026: Trip[] = [
@@ -17,6 +18,7 @@ const trips2026: Trip[] = [
     dates: "Jan 8–18, 2026",
     blurb: "Explore the islands of Bocas del Toro on this laid-back, exploratory adventure. Includes water taxis, lodging, and Freaky Friday tickets.",
     image: { src: "/images/panama/cover.jpg", alt: "Overwater cabins in Bocas del Toro, Panama" },
+    status: "closed",
   },
   {
     href: "/trips/2026/tempe",
@@ -90,7 +92,51 @@ const trips2026: Trip[] = [
   },
 ];
 
-export default function Trips2026ComingSoon() {
+// Reusable Trip Card Component
+function TripCard({ trip, featured = false }: { trip: Trip; featured?: boolean }) {
+  return (
+    <article 
+      className={`rounded-2xl overflow-hidden flex flex-col bg-white/5 border ${
+        featured ? "border-2 border-purple-400/30" : "border-white/10"
+      }`}
+    >
+      <div className={`relative w-full ${featured ? "h-64 md:h-72" : "h-48"}`}>
+        <Image src={trip.image.src} alt={trip.image.alt} fill className="object-cover" priority />
+        {trip.status === "soldOut" && (
+          <div className="absolute top-3 left-3 bg-gray-600 text-white text-sm font-bold px-3 py-1 rounded-full">
+            Sold Out
+          </div>
+        )}
+      </div>
+      <div className="p-5 flex-1 flex flex-col">
+        <h2 className="text-lg font-semibold text-purple-200 whitespace-pre-line">{trip.title}</h2>
+        <div className="text-sm text-white/70">{trip.dates}</div>
+        <p className="text-white/90 mt-2 flex-1">{trip.blurb}</p>
+
+        <div className="mt-4">
+          {trip.status === "soldOut" ? (
+            <button disabled className="bg-gray-500 text-white font-semibold px-4 py-2 rounded-lg cursor-not-allowed">
+              Sold Out
+            </button>
+          ) : trip.status === "closed" ? (
+            <button disabled className="bg-gray-500/70 text-white/70 font-semibold px-4 py-2 rounded-lg cursor-not-allowed">
+              Booking Closed
+            </button>
+          ) : trip.href ? (
+            <Link
+              href={trip.href}
+              className="inline-block px-4 py-2 rounded-lg bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold"
+            >
+              View Details & Book
+            </Link>
+          ) : null}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export default function Trips2026Page() {
   const firstRowTrips = trips2026.slice(0, 3);      // Panama, Tempe, Miami
   const coachellaRowTrips = trips2026.slice(3, 6);  // Coachella, Coach-Stage, Stagecoach
   const yachtWeekTrips = trips2026.slice(6, 8);     // Croatia, Greece (the actual yacht weeks)
@@ -115,108 +161,28 @@ export default function Trips2026ComingSoon() {
         {/* First Row: 3 Cards */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-6">
           {firstRowTrips.map((t, i) => (
-            <article key={i} className="rounded-2xl overflow-hidden flex flex-col bg-white/5 border border-white/10">
-              <div className="relative w-full h-48">
-                <Image src={t.image.src} alt={t.image.alt} fill className="object-cover" priority />
-              </div>
-              <div className="p-5 flex-1 flex flex-col">
-                <h2 className="text-lg font-semibold text-purple-200 whitespace-pre-line">{t.title}</h2>
-                <div className="text-sm text-white/70">{t.dates}</div>
-                <p className="text-white/90 mt-2 flex-1">{t.blurb}</p>
-
-                <div className="mt-4">
-                  {t.href && (
-                    <Link
-                      href={t.href}
-                      className="inline-block px-4 py-2 rounded-lg bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold"
-                    >
-                      View Details & Book
-                    </Link>
-                  )}
-                </div>
-              </div>
-            </article>
+            <TripCard key={i} trip={t} />
           ))}
         </div>
 
         {/* Second Row: 3 Cards (Coachella/Stagecoach) */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-6">
           {coachellaRowTrips.map((t, i) => (
-            <article key={i} className="rounded-2xl overflow-hidden flex flex-col bg-white/5 border border-white/10">
-              <div className="relative w-full h-48">
-                <Image src={t.image.src} alt={t.image.alt} fill className="object-cover" priority />
-              </div>
-              <div className="p-5 flex-1 flex flex-col">
-                <h2 className="text-lg font-semibold text-purple-200 whitespace-pre-line">{t.title}</h2>
-                <div className="text-sm text-white/70">{t.dates}</div>
-                <p className="text-white/90 mt-2 flex-1">{t.blurb}</p>
-
-                <div className="mt-4">
-                  {t.href && (
-                    <Link
-                      href={t.href}
-                      className="inline-block px-4 py-2 rounded-lg bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold"
-                    >
-                      View Details & Book
-                    </Link>
-                  )}
-                </div>
-              </div>
-            </article>
+            <TripCard key={i} trip={t} />
           ))}
         </div>
 
         {/* Third Row: 2 Yacht Week Cards (Larger/Featured) */}
         <div className="grid gap-6 md:grid-cols-2 mt-6">
           {yachtWeekTrips.map((t, i) => (
-            <article key={i} className="rounded-2xl overflow-hidden flex flex-col bg-white/5 border-2 border-purple-400/30">
-              <div className="relative w-full h-64 md:h-72">
-                <Image src={t.image.src} alt={t.image.alt} fill className="object-cover" priority />
-              </div>
-              <div className="p-5 flex-1 flex flex-col">
-                <h2 className="text-lg font-semibold text-purple-200 whitespace-pre-line">{t.title}</h2>
-                <div className="text-sm text-white/70">{t.dates}</div>
-                <p className="text-white/90 mt-2 flex-1">{t.blurb}</p>
-
-                <div className="mt-4">
-                  {t.href && (
-                    <Link
-                      href={t.href}
-                      className="inline-block px-4 py-2 rounded-lg bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold"
-                    >
-                      View Details & Book
-                    </Link>
-                  )}
-                </div>
-              </div>
-            </article>
+            <TripCard key={i} trip={t} featured />
           ))}
         </div>
 
         {/* Fourth Row: 3 Cards */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-6">
           {remainingTrips.map((t, i) => (
-            <article key={i} className="rounded-2xl overflow-hidden flex flex-col bg-white/5 border border-white/10">
-              <div className="relative w-full h-48">
-                <Image src={t.image.src} alt={t.image.alt} fill className="object-cover" priority />
-              </div>
-              <div className="p-5 flex-1 flex flex-col">
-                <h2 className="text-lg font-semibold text-purple-200 whitespace-pre-line">{t.title}</h2>
-                <div className="text-sm text-white/70">{t.dates}</div>
-                <p className="text-white/90 mt-2 flex-1">{t.blurb}</p>
-
-                <div className="mt-4">
-                  {t.href && (
-                    <Link
-                      href={t.href}
-                      className="inline-block px-4 py-2 rounded-lg bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-semibold"
-                    >
-                      View Details & Book
-                    </Link>
-                  )}
-                </div>
-              </div>
-            </article>
+            <TripCard key={i} trip={t} />
           ))}
         </div>
       </main>
